@@ -1,5 +1,7 @@
 package com.jsa.analytics.model;
 
+import android.text.TextUtils;
+
 public class SignupUserModel {
     String createdDate;
     String email;

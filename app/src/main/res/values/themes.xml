@@ -19,4 +19,25 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/white</item>
     </style>
 
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">#CC000000</item>
+<!--        <item name="android:backgroundTint">@color/red</item>-->
+<!--        <item name="android:textSize">14sp</item>-->
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:paddingLeft">0dp</item>
+        <!--<item name="android:dropDownWidth">533dp</item>-->
+        <item name="android:showDividers">none</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:textColor">@color/box_stroke_color</item>
+        <!--<item name="android:popupBackground">@drawable/new_bg</item>-->
+        <!--<item name="android:dropDownHeight">70dp</item>-->
+        <item name="android:textSize">12sp</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:dropDownSelector">@android:color/white</item>
+    </style>
+
 </resources>

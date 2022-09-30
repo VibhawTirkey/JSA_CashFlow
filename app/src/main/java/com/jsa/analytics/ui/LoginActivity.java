@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.CompoundButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jsa.analytics.databinding.ActivityLoginBinding;
+import com.jsa.analytics.model.UserDetailModel;
+import com.jsa.analytics.utils.AppSharedPreferenceManager;
 import com.jsa.analytics.utils.Utilities;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
+    private Boolean switchStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         if (mUser != null){
             startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
             finish();
+        }
+
+        if (AppSharedPreferenceManager.getUserData(getApplicationContext())!=null){
+            switchStatus = true;
+            binding.saveSwitch.setChecked(true);
+            binding.username.setText(AppSharedPreferenceManager.getUserData(getApplicationContext()).getUserName());
+            binding.password.setText(AppSharedPreferenceManager.getUserData(getApplicationContext()).getPassword());
         }
 
         binding.back.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +75,18 @@ public class LoginActivity extends AppCompatActivity {
             }else {
                 binding.userContainer.setHelperText("Empty");
             }
-            if (Utilities.isValidEmail(binding.username.getText().toString())){
+        });
 
+
+        binding.saveSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    switchStatus = true;
+                }else {
+                    switchStatus = false;
+                }
             }
-
         });
     }
 
@@ -76,6 +95,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    if (switchStatus){
+                        AppSharedPreferenceManager.setUserData(getApplicationContext(),new UserDetailModel(binding.username.getText().toString(),binding.password.getText().toString()));
+                    }else {
+                        AppSharedPreferenceManager.clearUserData(getApplicationContext());
+                    }
                     startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
                     finish();
                 }else {

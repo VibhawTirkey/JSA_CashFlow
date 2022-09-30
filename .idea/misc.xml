@@ -3,17 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/banner_tab_indicator_default.xml" value="0.122" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/banner_tab_indicator_selected.xml" value="0.122" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/border_bg.xml" value="0.122" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/cursor.xml" value="0.122" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/ic_cashflow.xml" value="0.1135" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/ic_round_arrow_forward.xml" value="0.1025" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/ic_round_keyboard_arrow_down.xml" value="0.1025" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/place_holder.xml" value="0.108" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/round_btn_bg.xml" value="0.122" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/round_btn_gg.xml" value="0.122" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/spinner_background.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/splash_bg.xml" value="0.1135" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/drawable/splash_mask.xml" value="0.1135" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_cashflow_dashboard.xml" value="0.15703125" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_first_input.xml" value="0.18" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_home_screen.xml" value="0.1358108108108108" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_login.xml" value="0.11805555555555555" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_login.xml" value="0.1358108108108108" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_on_boarding.xml" value="0.18" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_profile.xml" value="0.1358108108108108" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_second_input.xml" value="0.1375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_signup.xml" value="0.1358108108108108" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/activity_third_input.xml" value="0.1358108108108108" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/banner_item_layot.xml" value="0.13513513513513514" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/banner_item_layout.xml" value="0.1358108108108108" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/home_nav_header_layout.xml" value="0.11805555555555555" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/input_item_1.xml" value="0.15703125" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/layout/toolbar.xml" value="0.13513513513513514" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/JSACashFlow/app/src/main/res/menu/home_nav_menu.xml" value="0.1358108108108108" />
       </map>
     </option>

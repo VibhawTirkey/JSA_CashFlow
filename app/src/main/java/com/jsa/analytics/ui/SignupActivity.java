@@ -1,5 +1,7 @@
 package com.jsa.analytics.ui;
 
+import static com.jsa.analytics.utils.Constants.DATE_FORMAT;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,7 @@ import com.jsa.analytics.databinding.ActivitySignupBinding;
 import com.jsa.analytics.model.SignupUserModel;
 import com.jsa.analytics.utils.Utilities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SignupActivity extends AppCompatActivity {
@@ -84,7 +87,7 @@ public class SignupActivity extends AppCompatActivity {
     private void signupUser(String email, String password) {
 
         SignupUserModel signupUserModel = new SignupUserModel();
-        signupUserModel.setCreatedDate(new Date().toString());
+        signupUserModel.setCreatedDate(new SimpleDateFormat(DATE_FORMAT).format(new Date()));
         signupUserModel.setEmail(email);
         signupUserModel.setExclusiveMode("none");
         signupUserModel.setExclusiveMember(false);
@@ -95,21 +98,19 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    database.collection("users/"+firebaseAuth.getUid())
-                                    .add(signupUserModel).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    database.collection("users").document(firebaseAuth.getUid())
+                                    .set(signupUserModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(SignupActivity.this, "Successfully Signed up", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
-                                    finish();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(SignupActivity.this, "Please try again", Toast.LENGTH_SHORT).show();
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(SignupActivity.this, "Successfully Signed up", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+                                        finish();
+                                    }else {
+                                        Toast.makeText(SignupActivity.this, "Please try again", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             });
-
                 }else {
                     Toast.makeText(SignupActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }

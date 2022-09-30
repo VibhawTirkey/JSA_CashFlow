@@ -7,12 +7,31 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/jsa_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/jsa_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JSACashFlow"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.AnalyticsOutputActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.CashflowDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CashFlowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.BalanceSheetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FinancialSummaryActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.ProfileActivity"
             android:exported="false" />

@@ -7,6 +7,11 @@ public class UserDetailModel {
     public UserDetailModel() {
     }
 
+    public UserDetailModel(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public String getUserName() {
         return userName;
     }

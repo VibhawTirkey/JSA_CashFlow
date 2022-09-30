@@ -71,8 +71,9 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
             android:fontFamily="@font/nunito_medium"
-             />
+             android:imeOptions="actionNext"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +95,9 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/nunito_medium"/>
+            android:inputType="textPassword"
+            android:fontFamily="@font/nunito_medium"
+            android:imeOptions="actionDone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
