@@ -6,6 +6,15 @@ public class InputModel implements Serializable {
     private FinancialSummaryModel financialSummary;
     private BalanceSheetModel balanceSheet;
     private CashFlowModel cashFlow;
+    private String yearMonthName;
+
+    public String getYearMonthName() {
+        return yearMonthName;
+    }
+
+    public void setYearMonthName(String yearMonthName) {
+        this.yearMonthName = yearMonthName;
+    }
 
     public FinancialSummaryModel getFinancialSummary() {
         return financialSummary;

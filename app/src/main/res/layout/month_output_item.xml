@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#4CAF50"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/layout2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/month"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Month Year"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/goto_edit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/goto_edit"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_round_edit_"
+                    app:layout_constraintEnd_toStartOf="@id/goto_chart"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/goto_chart"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_round_show_chart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:background="#DFDDDD"
+                android:gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="@id/layout4"
+                app:layout_constraintTop_toBottomOf="@id/header_title"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Actual"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plan"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D6EBFD"
+                android:gravity="center"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintTop_toBottomOf="@id/header_title">
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="GP %"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="NP %"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="ROI %"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inventory Turn"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Current Ratio"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Ratio"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintEnd_toEndOf="@id/layout2"
+                app:layout_constraintTop_toBottomOf="@id/layout2">
+
+                <TextView
+                    android:id="@+id/actual_gpp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_npp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_roi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_inventory_turn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_current_ratio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_quick_ratio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintEnd_toEndOf="@id/layout3"
+                app:layout_constraintTop_toBottomOf="@id/layout3">
+
+                <TextView
+                    android:id="@+id/plan_gpp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_npp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_roi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_inventory_turn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_current_ratio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_quick_ratio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout5"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:background="#DFDDDD"
+                android:gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="@id/layout8"
+                app:layout_constraintTop_toBottomOf="@id/layout1"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Actual"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plan"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D6EBFD"
+                android:gravity="center"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintTop_toBottomOf="@id/layout4">
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Debtor Days"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inventory Days"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Creditor Days"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="CCC Days"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Working Capital"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Debt Equity Ratio"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintEnd_toEndOf="@id/layout3"
+                app:layout_constraintTop_toBottomOf="@id/layout6">
+
+                <TextView
+                    android:id="@+id/actual_debtor_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_inventory_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_creditor_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_ccc_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_working_capital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_der"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintEnd_toEndOf="@id/layout3"
+                app:layout_constraintTop_toBottomOf="@id/layout7">
+
+                <TextView
+                    android:id="@+id/plan_debtor_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_inventory_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_creditor_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_ccc_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_working_capital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_der"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout9"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:background="#DFDDDD"
+                android:gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="@id/layout12"
+                app:layout_constraintTop_toBottomOf="@id/layout5"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Actual"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plan"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D6EBFD"
+                android:gravity="center"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintTop_toBottomOf="@id/layout8">
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sale"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="GP"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="NP"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cash Profit"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Balance"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Net Worth"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout9"
+                app:layout_constraintEnd_toEndOf="@id/layout3"
+                app:layout_constraintTop_toBottomOf="@id/layout10">
+
+                <TextView
+                    android:id="@+id/actual_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_gp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_np"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_cash_profit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_bank_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/actual_net_worth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintEnd_toEndOf="@id/layout3"
+                app:layout_constraintTop_toBottomOf="@id/layout11">
+
+                <TextView
+                    android:id="@+id/plan_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_gp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_np"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_cash_profit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_bank_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+                <TextView
+                    android:id="@+id/plan_net_worth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_bold"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

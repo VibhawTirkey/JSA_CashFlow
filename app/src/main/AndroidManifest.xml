@@ -14,6 +14,27 @@
         android:theme="@style/Theme.JSACashFlow"
         tools:targetApi="31">
         <activity
+            android:name=".ui.VideoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ForgetPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.MonthSelectActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.AnalyticsOutputActivity"
             android:exported="false">
             <meta-data
@@ -21,7 +42,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.CashflowDashboardActivity"
+            android:name=".ui.CashFlowDashboardActivity"
             android:exported="false" />
         <activity
             android:name=".ui.CashFlowActivity"

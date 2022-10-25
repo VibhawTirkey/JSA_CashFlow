@@ -9,18 +9,24 @@ import androidx.core.view.GravityCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jsa.analytics.R;
 import com.jsa.analytics.adapter.BannerAdapter;
 import com.jsa.analytics.adapter.EndlessPagerAdapter;
 import com.jsa.analytics.databinding.ActivityHomeScreenBinding;
+import com.jsa.analytics.databinding.HomeNavHeaderLayoutBinding;
+import com.jsa.analytics.model.BannerModel;
 import com.jsa.analytics.model.BannersModel;
 import com.jsa.analytics.model.FinancialSummaryModel;
 import com.jsa.analytics.model.BalanceSheetModel;
@@ -28,10 +34,13 @@ import com.jsa.analytics.model.CashFlowModel;
 import com.jsa.analytics.model.InputModel;
 import com.jsa.analytics.utils.Utilities;
 
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -57,6 +66,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         //toolbar
         setSupportActionBar(binding.toolbar);
@@ -89,33 +99,57 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        //header
+        headerView();
 
-//        binding.etTest.setCompoundDrawables(Utilities.getTextDrawable(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.box_stroke_color), "Hello"),null,null,null);
-        binding.test.setCompoundDrawables(Utilities.getTextDrawable(getApplicationContext(),ContextCompat.getColor(getApplicationContext(),R.color.black),"%",binding.etTest.getHeight()),
-                null,
-                null,
-                null);
+
+
     }
+
+    private void headerView() {
+        View headerView = binding.navView.getHeaderView(0);
+        HomeNavHeaderLayoutBinding headerLayoutBinding =HomeNavHeaderLayoutBinding.bind(headerView);
+        headerLayoutBinding.email.setText(firebaseUser.getEmail());
+    }
+
     private void getBannerData() {
         bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/hair-removal-promo-services-design-template-e1cedef4c04fc048a91faab72ed702f5_screen.jpg"));
         bannerImgList.add(new BannersModel("https://blog.magezon.com/wp-content/uploads/2020/08/fashion-promotion-banner-sample.png"));
         bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/business-marketing-agency-flyer-design-template-1f7ac644ccb45570e3f9ec20961588d7_screen.jpg"));
         bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-wash-flyer%2C-car-repair-digital-display-design-template-0625d8fd81f851c9f1097ffd13c26ef3_screen.jpg"));
         bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/spring-sale-design-template-668a8d9baa97f163ba93300abaf14f48_screen.jpg"));
+        firebaseFirestore.collection("learning").document("banner").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    List<BannerModel> models = new ArrayList<>();
+                    List<String> keys = new ArrayList<>();
+                    JSONObject obj = new JSONObject(task.getResult().getData());
+                    Iterator<String> iterator = obj.keys();
+                    while(iterator.hasNext()){
+                        String key = iterator.next();
+                        keys.add(key);
+                    }
+
+                }else {
+                    Log.e(TAG, "onComplete: ",task.getException());
+                }
+            }
+        });
+
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.home:
-
+            case R.id.videos:
+                startActivity(new Intent(getApplicationContext(),VideoActivity.class));
                 break;
             case R.id.profile:
                 startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                 break;
-            case R.id.analytics:
-                startActivity(new Intent(getApplicationContext(), FinancialSummaryActivity.class));
+            case R.id.dashboard:
+                startActivity(new Intent(getApplicationContext(), CashFlowDashboardActivity.class));
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();

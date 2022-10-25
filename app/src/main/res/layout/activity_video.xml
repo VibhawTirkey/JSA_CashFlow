@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AnalyticsOutputActivity">
+    tools:context=".ui.VideoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -16,24 +16,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Charts"
             android:background="@color/white"
+            app:title="Videos"
+            app:navigationContentDescription="Go Back"
             app:navigationIcon="@drawable/ic_round_arrow_back"/>
+
     </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chart_views"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:listitem="@layout/item_chart"
-        app:layout_constraintTop_toBottomOf="@id/app_bar"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/app_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

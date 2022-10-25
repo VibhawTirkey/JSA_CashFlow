@@ -25,7 +25,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:textSize="18sp"
-        android:fontFamily="@font/nunito_bold"/>
+        android:fontFamily="@font/nunito_bold"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/text"

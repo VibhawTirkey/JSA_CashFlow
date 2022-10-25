@@ -49,21 +49,6 @@
                 app:layout_constraintStart_toStartOf="@id/banner_viewpager"
                 app:layout_constraintTop_toBottomOf="@id/banner_viewpager"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fetch"
-                app:layout_constraintTop_toBottomOf="@id/banner_tab"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <EditText
-                android:id="@+id/et_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_round_arrow_back"
-                app:layout_constraintTop_toBottomOf="@id/test"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

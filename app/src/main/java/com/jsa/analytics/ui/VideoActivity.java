@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.jsa.analytics.databinding.ActivityProfileBinding;
+import com.jsa.analytics.databinding.ActivityVideoBinding;
 
-public class ProfileActivity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
-    ActivityProfileBinding binding;
+    ActivityVideoBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        binding = ActivityVideoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -23,6 +23,5 @@ public class ProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
 }

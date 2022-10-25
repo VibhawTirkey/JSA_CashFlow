@@ -3,6 +3,7 @@ package com.jsa.analytics.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import com.jsa.analytics.R;
 import com.jsa.analytics.databinding.ActivityFinancialSummaryBinding;
 import com.jsa.analytics.model.FinancialSummaryModel;
 import com.jsa.analytics.model.InputModel;
+import com.jsa.analytics.utils.StaticFields;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -46,88 +48,107 @@ public class FinancialSummaryActivity extends AppCompatActivity implements Adapt
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        String date = new SimpleDateFormat("yyyyMM").format(new Date());
 
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        binding.gotoSecondInput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (getIntent().getStringExtra("date")!=null){
+            binding.gotoSecondInput.setOnClickListener(view -> {
                 getInputData();
+                StaticFields.financialSummaryModel = financialSummaryModel;
                 Intent intent = new Intent(getApplicationContext(),BalanceSheetActivity.class);
-                intent.putExtra("financialSummary",(Serializable)financialSummaryModel);
+                intent.putExtra("date",getIntent().getStringExtra("date"));
                 startActivity(intent);
-//                startActivity(new Intent(getApplicationContext(), BalanceSheetActivity.class));
-                /*firebaseFirestore.collection("analyticsData").document(firebaseAuth.getUid()).update(date,inputModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+            });
+        } else {
+            setDataOnFields(StaticFields.editModel);
+            binding.gotoSecondInput.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getInputData();
+                    StaticFields.editModel.setFinancialSummary(financialSummaryModel);
+                    Intent intent = new Intent(getApplicationContext(),BalanceSheetActivity.class);
+                    intent.putExtra("newData",inputModel);
+                    intent.putExtra("editDate",getIntent().getStringExtra("editDate"));
+                    startActivity(intent);
+                }
+            });
 
-                        }else {
-                            Toast.makeText(FinancialSummaryActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });*/
-
-            }
-        });
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(FinancialSummaryActivity.this, android.R.layout.simple_spinner_item, setPriceUnit);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.revenueContainer.planSpinner.setAdapter(adapter);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(FinancialSummaryActivity.this, android.R.layout.simple_spinner_item, setPriceUnit);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.revenue.planSpinner.setAdapter(adapter);
 //        binding.creditorsDaysContainer.planSpinner.setAdapter(adapter);
 //        binding.debtorsDaysContainer.planSpinner.setAdapter(adapter);
-        binding.gpPercentContainer.planSpinner.setAdapter(adapter);
+            binding.gpPercent.planSpinner.setAdapter(adapter);
 //        binding.newCapitalContainer.planSpinner.setAdapter(adapter);
-        binding.npRatioContainer.planSpinner.setAdapter(adapter);
+            binding.npPercent.planSpinner.setAdapter(adapter);
 //        binding.inventoryDaysContainer.planSpinner.setAdapter(adapter);
 
 //        binding.inventoryDaysContainer.actualSpinner.setAdapter(adapter);
-        binding.revenueContainer.actualSpinner.setAdapter(adapter);
+            binding.revenue.actualSpinner.setAdapter(adapter);
 //        binding.creditorsDaysContainer.actualSpinner.setAdapter(adapter);
 //        binding.debtorsDaysContainer.actualSpinner.setAdapter(adapter);
-        binding.gpPercentContainer.actualSpinner.setAdapter(adapter);
+            binding.gpPercent.actualSpinner.setAdapter(adapter);
 //        binding.newCapitalContainer.actualSpinner.setAdapter(adapter);
-        binding.npRatioContainer.actualSpinner.setAdapter(adapter);
-        binding.revenueContainer.actualSpinner.setOnItemSelectedListener(this);
-//        binding.revenueContainer.planInput.setCompoundDrawables(null,null,Utilities.getTextDrawable(getApplicationContext(), ContextCompat.getColor(getApplicationContext(),R.color.black),"₹"),null);
+            binding.npPercent.actualSpinner.setAdapter(adapter);
+            binding.revenue.actualSpinner.setOnItemSelectedListener(this);
+//        binding.revenue.planInput.setCompoundDrawables(null,null,Utilities.getTextDrawable(getApplicationContext(), ContextCompat.getColor(getApplicationContext(),R.color.black),"₹"),null);
+        }
 
+    }
+
+    private void setDataOnFields(InputModel model) {
+        binding.revenue.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getRevenue().getActualData()));
+        binding.revenue.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getRevenue().getExpectedData()));
+        binding.tvc.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getTotalVariableCost().getActualData()));
+        binding.tvc.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getTotalVariableCost().getExpectedData()));
+        binding.grossProfit.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getGrossProfit().getActualData()));
+        binding.grossProfit.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getGrossProfit().getExpectedData()));
+        binding.gpPercent.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getGrossProfitRatio().getActualData()));
+        binding.gpPercent.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getGrossProfitRatio().getExpectedData()));
+        binding.otherIncome.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getOtherIncome().getActualData()));
+        binding.otherIncome.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getOtherIncome().getExpectedData()));
+        binding.fixedCost.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getFixedCost().getActualData()));
+        binding.fixedCost.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getFixedCost().getExpectedData()));
+        binding.netProfit.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getNetProfit().getActualData()));
+        binding.netProfit.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getNetProfit().getExpectedData()));
+        binding.npPercent.actualInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getNetProfitRatio().getActualData()));
+        binding.npPercent.planInput.setText(String.valueOf(StaticFields.editModel.getFinancialSummary().getNetProfitRatio().getExpectedData()));
     }
 
     private void getInputData() {
         financialSummaryModel.setRevenue(new FinancialSummaryModel.Revenue(
-                new FinancialSummaryModel.Plan(
-                        Float.parseFloat(binding.revenueContainer.planInput.getText().toString().isEmpty()?"0":binding.revenueContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(
-                        Float.parseFloat(binding.revenueContainer.actualInput.getText().toString().isEmpty()?"0":binding.revenueContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.revenue.actualInput.getText().toString().isEmpty()?"0":binding.revenue.actualInput.getText().toString()),
+                Double.parseDouble(binding.revenue.planInput.getText().toString().isEmpty()?"0":binding.revenue.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setTotalVariableCost(new FinancialSummaryModel.TotalVariableCost(
-                new FinancialSummaryModel.Plan(
-                        Float.parseFloat(binding.tvcContainer.planInput.getText().toString().isEmpty()?"0":binding.tvcContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(
-                        Float.parseFloat(binding.tvcContainer.actualInput.getText().toString().isEmpty()?"0":binding.tvcContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.tvc.actualInput.getText().toString().isEmpty()?"0":binding.tvc.actualInput.getText().toString()),
+                Double.parseDouble(binding.tvc.planInput.getText().toString().isEmpty()?"0":binding.tvc.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setGrossProfit(new FinancialSummaryModel.GrossProfit(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.gpContainer.planInput.getText().toString().isEmpty()?"0":binding.gpContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.gpContainer.actualInput.getText().toString().isEmpty()?"0":binding.gpContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.grossProfit.actualInput.getText().toString().isEmpty()?"0":binding.grossProfit.actualInput.getText().toString()),
+                Double.parseDouble(binding.grossProfit.planInput.getText().toString().isEmpty()?"0":binding.grossProfit.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setGrossProfitRatio(new FinancialSummaryModel.GrossProfitRatio(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.gpPercentContainer.planInput.getText().toString().isEmpty()?"0":binding.gpPercentContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.gpPercentContainer.actualInput.getText().toString().isEmpty()?"0":binding.gpPercentContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.gpPercent.actualInput.getText().toString().isEmpty()?"0":binding.gpPercent.actualInput.getText().toString()),
+                Double.parseDouble(binding.gpPercent.planInput.getText().toString().isEmpty()?"0":binding.gpPercent.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setOtherIncome(new FinancialSummaryModel.OtherIncome(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.otherIncomeContainer.planInput.getText().toString().isEmpty()?"0":binding.otherIncomeContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.otherIncomeContainer.actualInput.getText().toString().isEmpty()?"0":binding.otherIncomeContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.otherIncome.actualInput.getText().toString().isEmpty()?"0":binding.otherIncome.actualInput.getText().toString()),
+                Double.parseDouble(binding.otherIncome.planInput.getText().toString().isEmpty()?"0":binding.otherIncome.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setFixedCost(new FinancialSummaryModel.FixedCost(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.fixedCostContainer.planInput.getText().toString().isEmpty()?"0":binding.fixedCostContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.fixedCostContainer.actualInput.getText().toString().isEmpty()?"0":binding.fixedCostContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.fixedCost.actualInput.getText().toString().isEmpty()?"0":binding.fixedCost.actualInput.getText().toString()),
+                Double.parseDouble(binding.fixedCost.planInput.getText().toString().isEmpty()?"0":binding.fixedCost.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setNetProfit(new FinancialSummaryModel.NetProfit(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.npContainer.planInput.getText().toString().isEmpty()?"0":binding.npContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.npContainer.actualInput.getText().toString().isEmpty()?"0":binding.npContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.netProfit.actualInput.getText().toString().isEmpty()?"0":binding.netProfit.actualInput.getText().toString()),
+                Double.parseDouble(binding.netProfit.planInput.getText().toString().isEmpty()?"0":binding.netProfit.planInput.getText().toString()),
+                "crore"));
         financialSummaryModel.setNetProfitRatio(new FinancialSummaryModel.NetProfitRatio(
-                new FinancialSummaryModel.Plan(Float.parseFloat(binding.npRatioContainer.planInput.getText().toString().isEmpty()?"0":binding.npRatioContainer.planInput.getText().toString())),
-                new FinancialSummaryModel.Actual(Float.parseFloat(binding.npRatioContainer.actualInput.getText().toString().isEmpty()?"0":binding.npRatioContainer.actualInput.getText().toString()))));
+                Double.parseDouble(binding.npPercent.actualInput.getText().toString().isEmpty()?"0":binding.npPercent.actualInput.getText().toString()),
+                Double.parseDouble(binding.npPercent.planInput.getText().toString().isEmpty()?"0":binding.npPercent.planInput.getText().toString()),
+                "crore"));
+
     }
 
     @Override

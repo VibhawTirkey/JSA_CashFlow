@@ -1,6 +1,8 @@
 package com.jsa.analytics.model;
 
-public class BalanceSheetModel {
+import java.io.Serializable;
+
+public class BalanceSheetModel implements Serializable {
 
     private Capital capital;
     private ReservesAndSurplus reservesAndSurplus;
@@ -13,6 +15,15 @@ public class BalanceSheetModel {
     private Inventory inventory;
     private CashAndBank cashAndBank;
     private OtherAsset otherAsset;
+    private Depreciation depreciation;
+
+    public Depreciation getDepreciation() {
+        return depreciation;
+    }
+
+    public void setDepreciation(Depreciation depreciation) {
+        this.depreciation = depreciation;
+    }
 
     public Capital getCapital() {
         return capital;
@@ -102,288 +113,31 @@ public class BalanceSheetModel {
         this.otherAsset = otherAsset;
     }
 
-    public static class Capital{
-        private Plan plan;
-        private Actual actual;
-
-        public Capital(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class ReservesAndSurplus{
-        private Plan plan;
-        private Actual actual;
-
-        public ReservesAndSurplus(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class Loan{
-        private Plan plan;
-        private Actual actual;
-
-        public Loan(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class Creditors{
-        private Plan plan;
-        private Actual actual;
-
-        public Creditors(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class OtherLiabilities{
-        private Plan plan;
-        private Actual actual;
-
-        public OtherLiabilities(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class FixedAsset{
-        private Plan plan;
-        private Actual actual;
-
-        public FixedAsset(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class Investment{
-        private Plan plan;
-        private Actual actual;
-
-        public Investment(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class Debtors{
-        private Plan plan;
-        private Actual actual;
-
-        public Debtors(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class Inventory{
-        private Plan plan;
-        private Actual actual;
-
-        public Inventory(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class CashAndBank{
-        private Plan plan;
-        private Actual actual;
-
-        public CashAndBank(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class OtherAsset{
-        private Plan plan;
-        private Actual actual;
-
-        public OtherAsset(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-
-    public static class Plan{
+    public static class Capital implements Serializable{
+        Double actualData;
+        Double expectedData;
         String unit;
-        float data;
 
-        public Plan(float data) {
-            this.data = data;
+        public Capital(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
         }
 
         public String getUnit() {
@@ -393,21 +147,32 @@ public class BalanceSheetModel {
         public void setUnit(String unit) {
             this.unit = unit;
         }
-
-        public float getData() {
-            return data;
-        }
-
-        public void setData(Float data) {
-            this.data = data;
-        }
     }
-    public static class Actual{
+    public static class ReservesAndSurplus implements Serializable{
+        Double actualData;
+        Double expectedData;
         String unit;
-        float data;
 
-        public Actual(float data) {
-            this.data = data;
+        public ReservesAndSurplus(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
         }
 
         public String getUnit() {
@@ -417,13 +182,355 @@ public class BalanceSheetModel {
         public void setUnit(String unit) {
             this.unit = unit;
         }
+    }
+    public static class Loan implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
 
-        public float getData() {
-            return data;
+        public Loan(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
         }
 
-        public void setData(int data) {
-            this.data = data;
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class Creditors implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public Creditors(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class OtherLiabilities implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public OtherLiabilities(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class FixedAsset implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public FixedAsset(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class Investment implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public Investment(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class Debtors implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public Debtors(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class Inventory implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public Inventory(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class CashAndBank implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public CashAndBank(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class OtherAsset implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public OtherAsset(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class Depreciation implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public Depreciation(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
         }
     }
 }

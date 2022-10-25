@@ -1,7 +1,5 @@
 package com.jsa.analytics.model;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class FinancialSummaryModel implements Serializable {
@@ -14,7 +12,7 @@ public class FinancialSummaryModel implements Serializable {
     private FixedCost fixedCost;
     private NetProfit netProfit;
     private NetProfitRatio netProfitRatio;
-
+    
     public Revenue getRevenue() {
         return revenue;
     }
@@ -79,213 +77,31 @@ public class FinancialSummaryModel implements Serializable {
         this.netProfitRatio = netProfitRatio;
     }
 
-    public static class Revenue{
-        private Plan plan;
-        private Actual actual;
-
-        public Revenue(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class TotalVariableCost{
-        private Plan plan;
-        private Actual actual;
-
-        public TotalVariableCost(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class GrossProfit{
-        private Plan plan;
-        private Actual actual;
-
-        public GrossProfit(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class GrossProfitRatio{
-        private Plan plan;
-        private Actual actual;
-
-        public GrossProfitRatio(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class OtherIncome{
-        private Plan plan;
-        private Actual actual;
-
-        public OtherIncome(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class FixedCost{
-        private Plan plan;
-        private Actual actual;
-
-        public FixedCost(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class NetProfit{
-        private Plan plan;
-        private Actual actual;
-
-        public NetProfit(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-    public static class NetProfitRatio{
-        private Plan plan;
-        private Actual actual;
-
-        public NetProfitRatio(Plan plan, Actual actual) {
-            this.plan = plan;
-            this.actual = actual;
-        }
-
-        public Plan getPlan() {
-            return plan;
-        }
-
-        public void setPlan(Plan plan) {
-            this.plan = plan;
-        }
-
-        public Actual getActual() {
-            return actual;
-        }
-
-        public void setActual(Actual actual) {
-            this.actual = actual;
-        }
-    }
-
-    public static class Plan{
+    public static class Revenue implements Serializable{
+        Double actualData;
+        Double expectedData;
         String unit;
-        float data;
 
-        public Plan(float data) {
-            this.data = data;
+        public Revenue(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
         }
 
         public String getUnit() {
@@ -295,21 +111,32 @@ public class FinancialSummaryModel implements Serializable {
         public void setUnit(String unit) {
             this.unit = unit;
         }
-
-        public float getData() {
-            return data;
-        }
-
-        public void setData(Float data) {
-            this.data = data;
-        }
     }
-    public static class Actual{
+    public static class TotalVariableCost implements Serializable{
+        Double actualData;
+        Double expectedData;
         String unit;
-        float data;
 
-        public Actual(float data) {
-            this.data = data;
+        public TotalVariableCost(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
         }
 
         public String getUnit() {
@@ -319,13 +146,215 @@ public class FinancialSummaryModel implements Serializable {
         public void setUnit(String unit) {
             this.unit = unit;
         }
+    }
+    public static class GrossProfit implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
 
-        public float getData() {
-            return data;
+        public GrossProfit(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
         }
 
-        public void setData(int data) {
-            this.data = data;
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class GrossProfitRatio implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public GrossProfitRatio(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class OtherIncome implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public OtherIncome(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class FixedCost implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public FixedCost(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class NetProfit implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public NetProfit(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+    public static class NetProfitRatio implements Serializable{
+        Double actualData;
+        Double expectedData;
+        String unit;
+
+        public NetProfitRatio(Double actualData, Double expectedData, String unit) {
+            this.actualData = actualData;
+            this.expectedData = expectedData;
+            this.unit = unit;
+        }
+
+        public Double getActualData() {
+            return actualData;
+        }
+
+        public void setActualData(Double actualData) {
+            this.actualData = actualData;
+        }
+
+        public Double getExpectedData() {
+            return expectedData;
+        }
+
+        public void setExpectedData(Double expectedData) {
+            this.expectedData = expectedData;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
         }
     }
 }

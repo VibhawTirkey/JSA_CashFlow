@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <include
-                android:id="@+id/revenue_container"
+                android:id="@+id/revenue"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,14 +60,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Total Venture Cost"
-                android:textColor="@color/black"
                 android:fontFamily="@font/nunito_bold"
+                android:text="Total Variable Cost"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/revenue_container" />
+                app:layout_constraintTop_toBottomOf="@id/revenue" />
 
             <include
-                android:id="@+id/tvc_container"
+                android:id="@+id/tvc"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,10 +83,10 @@
                 android:text="Gross Profit"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvc_container" />
+                app:layout_constraintTop_toBottomOf="@id/tvc" />
 
             <include
-                android:id="@+id/gp_container"
+                android:id="@+id/gross_profit"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,10 +102,10 @@
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gp_container" />
+                app:layout_constraintTop_toBottomOf="@id/gross_profit" />
 
             <include
-                android:id="@+id/gp_percent_container"
+                android:id="@+id/gp_percent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -117,13 +117,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="O. Income"
+                android:text="Other Income"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gp_percent_container"/>
+                app:layout_constraintTop_toBottomOf="@id/gp_percent" />
 
             <include
-                android:id="@+id/other_income_container"
+                android:id="@+id/other_income"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/input_item_1"
@@ -137,11 +137,11 @@
                 android:layout_marginTop="20dp"
                 android:text="Fixed Cost"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/other_income_container"
+                app:layout_constraintTop_toBottomOf="@id/other_income"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <include
-                android:id="@+id/fixed_cost_container"
+                android:id="@+id/fixed_cost"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,10 +156,10 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fixed_cost_container"/>
+                app:layout_constraintTop_toBottomOf="@id/fixed_cost"/>
 
             <include
-                android:id="@+id/np_container"
+                android:id="@+id/net_profit"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,10 +175,10 @@
                 android:text="NP %"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/np_container" />
+                app:layout_constraintTop_toBottomOf="@id/net_profit" />
 
             <include
-                android:id="@+id/np_ratio_container"
+                android:id="@+id/np_percent"
                 layout="@layout/input_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

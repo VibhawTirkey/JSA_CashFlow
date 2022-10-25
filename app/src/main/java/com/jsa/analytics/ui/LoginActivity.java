@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private Boolean switchStatus;
+    private Boolean switchStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ForgetPasswordActivity.class));
+            }
+        });
 
         binding.saveSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

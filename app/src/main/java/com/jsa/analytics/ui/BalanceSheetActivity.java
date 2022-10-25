@@ -12,14 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jsa.analytics.R;
 import com.jsa.analytics.databinding.ActivityBalanceSheetBinding;
 import com.jsa.analytics.model.BalanceSheetModel;
 import com.jsa.analytics.model.FinancialSummaryModel;
 import com.jsa.analytics.model.InputModel;
+import com.jsa.analytics.utils.StaticFields;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,32 +55,63 @@ public class BalanceSheetActivity extends AppCompatActivity {
             }
         });
 
-        FinancialSummaryModel financialSummary = (FinancialSummaryModel) getIntent().getSerializableExtra("financialSummary");
-        Log.i(TAG, "onCreate: "+financialSummary);
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        String date = new SimpleDateFormat("yyyyMM").format(new Date());
 
-        binding.gotoThirdInput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getInputData();
-                firebaseFirestore.collection("analyticsData").document(firebaseAuth.getUid()).update(date,inputModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            startActivity(new Intent(getApplicationContext(), CashFlowActivity.class));
-                        }else {
-                            Toast.makeText(BalanceSheetActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
+        if (getIntent().getStringExtra("date")!=null){
+            binding.gotoThirdInput.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getInputData();
+                    StaticFields.balanceSheetModel = balanceSheetModel;
+                    Intent intent = new Intent(getApplicationContext(),CashFlowActivity.class);
+                    intent.putExtra("date",getIntent().getStringExtra("date"));
+                    startActivity(intent);
+                }
+            });
+        }else {
+            setDataOnFields(StaticFields.editModel);
+            binding.gotoThirdInput.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getInputData();
+                    StaticFields.editModel.setBalanceSheet(balanceSheetModel);
+                    Intent intent = new Intent(getApplicationContext(),CashFlowActivity.class);
+                    intent.putExtra("editDate",getIntent().getStringExtra("editDate"));
+                    startActivity(intent);
+                }
+            });
+        }
 
         viewsListener();
 
+    }
+
+    private void setDataOnFields(InputModel editModel) {
+        binding.capital.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getCapital().getActualData()));
+        binding.capital.planInput.setText(String.valueOf(editModel.getBalanceSheet().getCapital().getExpectedData()));
+        binding.reserveSurplus.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getReservesAndSurplus().getActualData()));
+        binding.reserveSurplus.planInput.setText(String.valueOf(editModel.getBalanceSheet().getReservesAndSurplus().getExpectedData()));
+        binding.loan.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getReservesAndSurplus().getActualData()));
+        binding.loan.planInput.setText(String.valueOf(editModel.getBalanceSheet().getReservesAndSurplus().getExpectedData()));
+        binding.creditors.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getCreditors().getActualData()));
+        binding.creditors.planInput.setText(String.valueOf(editModel.getBalanceSheet().getCreditors().getExpectedData()));
+        binding.otherLiabilities.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getOtherLiabilities().getActualData()));
+        binding.otherLiabilities.planInput.setText(String.valueOf(editModel.getBalanceSheet().getOtherLiabilities().getExpectedData()));
+        binding.fixedAsset.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getFixedAsset().getActualData()));
+        binding.fixedAsset.planInput.setText(String.valueOf(editModel.getBalanceSheet().getFixedAsset().getExpectedData()));
+        binding.investment.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getInvestment().getActualData()));
+        binding.investment.planInput.setText(String.valueOf(editModel.getBalanceSheet().getInvestment().getExpectedData()));
+        binding.debtors.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getDebtors().getActualData()));
+        binding.debtors.planInput.setText(String.valueOf(editModel.getBalanceSheet().getDebtors().getExpectedData()));
+        binding.inventory.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getInventory().getActualData()));
+        binding.inventory.planInput.setText(String.valueOf(editModel.getBalanceSheet().getInventory().getExpectedData()));
+        binding.cashAndBank.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getCashAndBank().getActualData()));
+        binding.cashAndBank.planInput.setText(String.valueOf(editModel.getBalanceSheet().getCashAndBank().getExpectedData()));
+        binding.otherAssets.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getCashAndBank().getActualData()));
+        binding.otherAssets.planInput.setText(String.valueOf(editModel.getBalanceSheet().getCashAndBank().getExpectedData()));
+        binding.depreciation.actualInput.setText(String.valueOf(editModel.getBalanceSheet().getDepreciation().getActualData()==null?0:editModel.getBalanceSheet().getDepreciation().getActualData()));
+        binding.depreciation.planInput.setText(String.valueOf(editModel.getBalanceSheet().getDepreciation().getExpectedData()==null?0:editModel.getBalanceSheet().getDepreciation().getExpectedData()));
     }
 
     private void viewsListener() {
@@ -434,38 +470,53 @@ public class BalanceSheetActivity extends AppCompatActivity {
 
     private void getInputData() {
         balanceSheetModel.setCapital(new BalanceSheetModel.Capital(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.capital.planInput.getText().toString().isEmpty()?"0":binding.capital.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.capital.actualInput.getText().toString().isEmpty()?"0":binding.capital.actualInput.getText().toString()))));
+                Double.parseDouble(binding.capital.actualInput.getText().toString().isEmpty()?"0":binding.capital.actualInput.getText().toString()),
+                Double.parseDouble(binding.capital.planInput.getText().toString().isEmpty()?"0":binding.capital.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setReservesAndSurplus(new BalanceSheetModel.ReservesAndSurplus(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.reserveSurplus.planInput.getText().toString().isEmpty()?"0":binding.reserveSurplus.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.reserveSurplus.actualInput.getText().toString().isEmpty()?"0":binding.reserveSurplus.actualInput.getText().toString()))));
+                Double.parseDouble(binding.reserveSurplus.actualInput.getText().toString().isEmpty()?"0":binding.reserveSurplus.actualInput.getText().toString()),
+                Double.parseDouble(binding.reserveSurplus.planInput.getText().toString().isEmpty()?"0":binding.reserveSurplus.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setLoan(new BalanceSheetModel.Loan(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.loan.planInput.getText().toString().isEmpty()?"0":binding.loan.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.loan.actualInput.getText().toString().isEmpty()?"0":binding.loan.actualInput.getText().toString()))));
+                Double.parseDouble(binding.loan.actualInput.getText().toString().isEmpty()?"0":binding.loan.actualInput.getText().toString()),
+                Double.parseDouble(binding.loan.planInput.getText().toString().isEmpty()?"0":binding.loan.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setCreditors(new BalanceSheetModel.Creditors(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.creditors.planInput.getText().toString().isEmpty()?"0":binding.creditors.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.creditors.actualInput.getText().toString().isEmpty()?"0":binding.creditors.actualInput.getText().toString()))));
+                Double.parseDouble(binding.creditors.actualInput.getText().toString().isEmpty()?"0":binding.creditors.actualInput.getText().toString()),
+                Double.parseDouble(binding.creditors.planInput.getText().toString().isEmpty()?"0":binding.creditors.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setOtherLiabilities(new BalanceSheetModel.OtherLiabilities(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.otherLiabilities.planInput.getText().toString().isEmpty()?"0":binding.otherLiabilities.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.otherLiabilities.actualInput.getText().toString().isEmpty()?"0":binding.otherLiabilities.actualInput.getText().toString()))));
+                Double.parseDouble(binding.otherLiabilities.actualInput.getText().toString().isEmpty()?"0":binding.otherLiabilities.actualInput.getText().toString()),
+                Double.parseDouble(binding.otherLiabilities.planInput.getText().toString().isEmpty()?"0":binding.otherLiabilities.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setFixedAsset(new BalanceSheetModel.FixedAsset(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.fixedAsset.planInput.getText().toString().isEmpty()?"0":binding.fixedAsset.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.fixedAsset.actualInput.getText().toString().isEmpty()?"0":binding.fixedAsset.actualInput.getText().toString()))));
+                Double.parseDouble(binding.fixedAsset.actualInput.getText().toString().isEmpty()?"0":binding.fixedAsset.actualInput.getText().toString()),
+                Double.parseDouble(binding.fixedAsset.planInput.getText().toString().isEmpty()?"0":binding.fixedAsset.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setInvestment(new BalanceSheetModel.Investment(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.investment.planInput.getText().toString().isEmpty()?"0":binding.investment.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.investment.actualInput.getText().toString().isEmpty()?"0":binding.investment.actualInput.getText().toString()))));
+                Double.parseDouble(binding.investment.actualInput.getText().toString().isEmpty()?"0":binding.investment.actualInput.getText().toString()),
+                Double.parseDouble(binding.investment.planInput.getText().toString().isEmpty()?"0":binding.investment.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setDebtors(new BalanceSheetModel.Debtors(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.debtors.planInput.getText().toString().isEmpty()?"0":binding.debtors.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.debtors.actualInput.getText().toString().isEmpty()?"0":binding.debtors.actualInput.getText().toString()))));
+                Double.parseDouble(binding.debtors.actualInput.getText().toString().isEmpty()?"0":binding.debtors.actualInput.getText().toString()),
+                Double.parseDouble(binding.debtors.planInput.getText().toString().isEmpty()?"0":binding.debtors.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setInventory(new BalanceSheetModel.Inventory(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.inventory.planInput.getText().toString().isEmpty()?"0":binding.inventory.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.inventory.actualInput.getText().toString().isEmpty()?"0":binding.inventory.actualInput.getText().toString()))));
+                Double.parseDouble(binding.inventory.actualInput.getText().toString().isEmpty()?"0":binding.inventory.actualInput.getText().toString()),
+                Double.parseDouble(binding.inventory.planInput.getText().toString().isEmpty()?"0":binding.inventory.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setCashAndBank(new BalanceSheetModel.CashAndBank(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.cashAndBank.planInput.getText().toString().isEmpty()?"0":binding.cashAndBank.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.cashAndBank.actualInput.getText().toString().isEmpty()?"0":binding.cashAndBank.actualInput.getText().toString()))));
+                Double.parseDouble(binding.cashAndBank.actualInput.getText().toString().isEmpty()?"0":binding.cashAndBank.actualInput.getText().toString()),
+                Double.parseDouble(binding.cashAndBank.planInput.getText().toString().isEmpty()?"0":binding.cashAndBank.planInput.getText().toString()),
+                "crore"));
         balanceSheetModel.setOtherAsset(new BalanceSheetModel.OtherAsset(
-                new BalanceSheetModel.Plan(Float.parseFloat(binding.otherAssets.planInput.getText().toString().isEmpty()?"0":binding.otherAssets.planInput.getText().toString())),
-                new BalanceSheetModel.Actual(Float.parseFloat(binding.otherAssets.actualInput.getText().toString().isEmpty()?"0":binding.otherAssets.actualInput.getText().toString()))));
+                Double.parseDouble(binding.otherAssets.actualInput.getText().toString().isEmpty()?"0":binding.otherAssets.actualInput.getText().toString()),
+                Double.parseDouble(binding.otherAssets.planInput.getText().toString().isEmpty()?"0":binding.otherAssets.planInput.getText().toString()),
+                "crore"));
+        balanceSheetModel.setDepreciation(new BalanceSheetModel.Depreciation(
+                Double.parseDouble(binding.depreciation.actualInput.getText().toString().isEmpty()?"0":binding.depreciation.actualInput.getText().toString()),
+                Double.parseDouble(binding.depreciation.planInput.getText().toString().isEmpty()?"0":binding.depreciation.planInput.getText().toString()),
+                "crore"));
         inputModel.setBalanceSheet(balanceSheetModel);
     }
 

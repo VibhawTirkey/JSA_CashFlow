@@ -131,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Total"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/other_liabilities"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -140,6 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:weightSum="2"
+                android:visibility="gone"
                 android:background="@drawable/border_bg"
                 app:layout_constraintTop_toBottomOf="@id/total_title">
 
@@ -294,12 +296,33 @@
                 app:layout_constraintTop_toBottomOf="@id/other_assets_title"/>
 
             <TextView
+                android:id="@+id/depreciation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Depreciation"
+                android:fontFamily="@font/nunito_bold"
+                app:layout_constraintTop_toBottomOf="@id/other_assets"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <include
+                android:id="@+id/depreciation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                layout="@layout/input_item_1"
+                app:layout_constraintTop_toBottomOf="@id/depreciation_title"/>
+
+
+
+            <TextView
                 android:id="@+id/total1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Total"
-                app:layout_constraintTop_toBottomOf="@id/other_assets"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/depreciation"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <LinearLayout
@@ -308,6 +331,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:weightSum="2"
+                android:visibility="gone"
                 android:background="@drawable/border_bg"
                 app:layout_constraintTop_toBottomOf="@id/total1_title">
 
