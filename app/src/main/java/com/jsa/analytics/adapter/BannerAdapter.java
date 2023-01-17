@@ -11,15 +11,16 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.jsa.analytics.R;
+import com.jsa.analytics.model.BannerModel;
 import com.jsa.analytics.model.BannersModel;
 
 import java.util.List;
 
 public class BannerAdapter extends PagerAdapter {
     private Context context;
-    private List<BannersModel> bannerItems;
+    private List<BannerModel> bannerItems;
 
-    public BannerAdapter(Context context, List<BannersModel> bannerItems) {
+    public BannerAdapter(Context context, List<BannerModel> bannerItems) {
         this.context = context;
         this.bannerItems = bannerItems;
     }
@@ -29,7 +30,7 @@ public class BannerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.banner_item_layout,container,false);
         ImageView imageView = view.findViewById(R.id.banner_img);
-        Glide.with(context).load(bannerItems.get(position).getImgUrl())
+        Glide.with(context).load(bannerItems.get(position).getLink())
 //                .thumbnail(Glide.with(context).load(R.drawable.image_place_holder))
                 .into(imageView);
         container.addView(view,0);

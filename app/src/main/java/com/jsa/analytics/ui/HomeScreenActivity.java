@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 import com.jsa.analytics.R;
 import com.jsa.analytics.adapter.BannerAdapter;
 import com.jsa.analytics.adapter.EndlessPagerAdapter;
@@ -34,6 +35,8 @@ import com.jsa.analytics.model.CashFlowModel;
 import com.jsa.analytics.model.InputModel;
 import com.jsa.analytics.utils.Utilities;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -54,6 +57,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     private List<BannersModel> bannerImgList = new ArrayList<>();
+    private List<BannerModel> models = new ArrayList<>();
     private BannerAdapter bannerAdapter;
     private int currentPage = 1;
     private Timer timer;
@@ -80,14 +84,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
 
         //banner
         getBannerData();
-        bannerAdapter = new BannerAdapter(getApplicationContext(), bannerImgList);
-        EndlessPagerAdapter endlessPagerAdapter = new EndlessPagerAdapter(bannerAdapter, binding.bannerViewpager);
-        binding.bannerViewpager.setAdapter(endlessPagerAdapter);
-        binding.bannerViewpager.setClipToPadding(false);
-        binding.bannerViewpager.setCurrentItem(currentPage, false);
-        binding.bannerViewpager.setPadding(50, 0, 50, 0);
-        binding.bannerTab.setupWithViewPager(binding.bannerViewpager, true);
-        startBannerSlider();
+
         binding.bannerViewpager.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -98,12 +95,18 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 return false;
             }
         });
+        //banner
 
         //header
         headerView();
+        //header
 
-
-
+        binding.viewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),HomeExtendActivity.class));
+            }
+        });
     }
 
     private void headerView() {
@@ -113,16 +116,10 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     }
 
     private void getBannerData() {
-        bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/hair-removal-promo-services-design-template-e1cedef4c04fc048a91faab72ed702f5_screen.jpg"));
-        bannerImgList.add(new BannersModel("https://blog.magezon.com/wp-content/uploads/2020/08/fashion-promotion-banner-sample.png"));
-        bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/business-marketing-agency-flyer-design-template-1f7ac644ccb45570e3f9ec20961588d7_screen.jpg"));
-        bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-wash-flyer%2C-car-repair-digital-display-design-template-0625d8fd81f851c9f1097ffd13c26ef3_screen.jpg"));
-        bannerImgList.add(new BannersModel("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/spring-sale-design-template-668a8d9baa97f163ba93300abaf14f48_screen.jpg"));
         firebaseFirestore.collection("learning").document("banner").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
-                    List<BannerModel> models = new ArrayList<>();
                     List<String> keys = new ArrayList<>();
                     JSONObject obj = new JSONObject(task.getResult().getData());
                     Iterator<String> iterator = obj.keys();
@@ -130,13 +127,33 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                         String key = iterator.next();
                         keys.add(key);
                     }
-
+                    for (String key:keys){
+                        try {
+                            JSONArray obj1 = obj.getJSONArray(key);
+                            for (int i = 0;i<obj1.length();i++){
+                                JSONObject object = obj1.getJSONObject(i);
+                                BannerModel bannerModel = new Gson().fromJson(String.valueOf(object),BannerModel.class);
+                                if (bannerModel.getVisible()){
+                                    models.add(bannerModel);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    bannerAdapter = new BannerAdapter(getApplicationContext(), models);
+                    EndlessPagerAdapter endlessPagerAdapter = new EndlessPagerAdapter(bannerAdapter, binding.bannerViewpager);
+                    binding.bannerViewpager.setAdapter(endlessPagerAdapter);
+                    binding.bannerViewpager.setClipToPadding(false);
+                    binding.bannerViewpager.setCurrentItem(currentPage, false);
+                    binding.bannerViewpager.setPadding(50, 0, 50, 0);
+                    binding.bannerTab.setupWithViewPager(binding.bannerViewpager, false);
+                    startBannerSlider();
                 }else {
                     Log.e(TAG, "onComplete: ",task.getException());
                 }
             }
         });
-
     }
 
     @Override

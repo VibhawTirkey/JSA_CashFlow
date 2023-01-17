@@ -7,8 +7,10 @@
     <ImageView
         android:id="@+id/banner_img"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:src="@drawable/place_holder"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_circle"
+        android:title="Home"/>
+    <item
+        android:id="@+id/insight"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_circle"
+        android:title="Insight"/>
+    <item
+        android:id="@+id/event"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_circle"
+        android:title="Event"/>
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_circle"
+        android:title="Profile"/>
+</menu>

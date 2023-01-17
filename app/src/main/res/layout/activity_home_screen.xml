@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
     tools:context=".ui.HomeScreenActivity">
 
-    <ScrollView
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="30dp">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,35 +31,221 @@
                     app:contentInsetLeft="0dp"/>
             </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/banner_viewpager"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:layout_constraintTop_toBottomOf="@id/app_bar"/>
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/app_bar"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/banner_tab"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone"
-                app:tabBackground="@drawable/banner_tab_selector"
-                app:layout_constraintEnd_toEndOf="@id/banner_viewpager"
-                app:layout_constraintStart_toStartOf="@id/banner_viewpager"
-                app:layout_constraintTop_toBottomOf="@id/banner_viewpager"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/banner_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/banner_tab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone"
+                        app:tabBackground="@drawable/banner_tab_selector"
+                        app:layout_constraintEnd_toEndOf="@id/banner_viewpager"
+                        app:layout_constraintStart_toStartOf="@id/banner_viewpager"
+                        app:layout_constraintTop_toBottomOf="@id/banner_viewpager"/>
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:background="@drawable/head_bg"
+                        app:layout_constraintTop_toBottomOf="@+id/banner_tab" />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/header_img"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="Get all the Tools, Strategies &amp;\n Hand-holding to..."
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        app:layout_constraintTop_toTopOf="@id/view2" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="Run a Cash Rich \nProfitable Business,\n For Life"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#2d2f31"
+                        android:drawableRight="@drawable/ic_arrow_forward"
+                        android:text="YES! I WANT TO REGISTER"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="End the cash-crunch\n phenomena in your \nbusiness"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/image" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/border_bg"
+                        android:drawableLeft="@drawable/ic_circle"
+                        android:drawablePadding="10dp"
+                        android:lineSpacingExtra="10dp"
+                        android:padding="25dp"
+                        android:text="Are you worried that despite your best efforts your business always runs out of the cash?"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        tools:layout_editor_absoluteX="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/border_bg"
+                        android:drawableLeft="@drawable/ic_circle"
+                        android:drawablePadding="10dp"
+                        android:lineSpacingExtra="10dp"
+                        android:padding="25dp"
+                        android:text="Do you feel that lack of financial discipline in your business causing huge losses year after year?"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/textView7"/>
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/border_bg"
+                        android:drawableLeft="@drawable/ic_circle"
+                        android:drawablePadding="10dp"
+                        android:lineSpacingExtra="10dp"
+                        android:padding="25dp"
+                        android:text="Are you generating decent profit in your business and yet getting stressed-out controlling finances?"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/textView8"/>
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/border_bg"
+                        android:drawableLeft="@drawable/ic_circle"
+                        android:drawablePadding="10dp"
+                        android:lineSpacingExtra="10dp"
+                        android:padding="25dp"
+                        android:text="Is constant financial pressure impacting your health and you’re feeling like shutting business?"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/textView9"/>
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:drawablePadding="10dp"
+                        android:lineSpacingExtra="10dp"
+                        android:text="@string/intro_1"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/textView10"/>
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:paddingTop="40dp"
+                        android:paddingBottom="10dp"
+                        android:background="#eff8fa"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:text="JSA Online"
+                        android:gravity="center"
+                        android:textColor="#003a59"
+                        app:layout_constraintTop_toBottomOf="@id/textView11"/>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/view_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#003a59"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/textView12"
+                        app:layout_constraintBottom_toTopOf="@id/textView12"/>
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:background="#eff8fa"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:text="Crafted by India’s Leading Cash Flow Coach \nJagmohan Singh"
+                        android:textColor="#003a59"
+                        app:layout_constraintTop_toBottomOf="@id/textView12"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
+            app:menu="@menu/home_nav_menu"
+            app:headerLayout="@layout/home_nav_header_layout"/>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:layout_gravity="start"
-        app:menu="@menu/home_nav_menu"
-        app:headerLayout="@layout/home_nav_header_layout"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,13 @@
     <string name="drawer_open">Open Nav</string>
     <string name="drawer_close">Close Nav</string>
     <!--    <string name="₹">rupee</string>-->
+
+    <string name="intro_1">Most business owners face all or most of above challenges and eventually witness their businesses go bust. The primary reason for this phenomena is: they run out of the cash.
+
+Make no mistake - the only way to build a highly profitable business and live a cash rich life is to take control of your money and master the science of Cash Flow Management.
+
+And, the only system that can help you master this science is...</string>
+    <string name="intro_2">This uniquely conceptualized system will empower you with extremely easy yet incredibly powerful skills, strategies and techniques to propel cash flow in your business and help you become unstoppable in your pursuit of entrepreneurial success.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

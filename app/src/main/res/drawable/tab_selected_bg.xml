@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <item android:drawable="@drawable/banner_tab_indicator_default" android:state_selected="true"/>-->
+<!--    <item android:drawable="@drawable/banner_tab_indicator_default"/>-->
+    <item android:state_selected="true">
+        <shape>
+            <corners android:radius="20dp"/>
+            <solid android:color="@color/box_stroke_color"/>
+        </shape>
+    </item>
+    <!--<item>
+        <shape>
+            <corners android:radius="20dp"/>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>-->
+</selector>
