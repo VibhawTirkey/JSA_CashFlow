@@ -6,15 +6,15 @@
         android:icon="@drawable/ic_outline_account_circle"
         android:title="Home"/>
     <item
-        android:id="@+id/insight"
+        android:id="@+id/report"
         android:enabled="true"
         android:icon="@drawable/ic_outline_account_circle"
-        android:title="Insight"/>
+        android:title="Report"/>
     <item
-        android:id="@+id/event"
+        android:id="@+id/guidance"
         android:enabled="true"
         android:icon="@drawable/ic_outline_account_circle"
-        android:title="Event"/>
+        android:title="Guidance"/>
     <item
         android:id="@+id/profile"
         android:enabled="true"

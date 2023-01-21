@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item android:drawable="@drawable/banner_tab_indicator_default" android:state_selected="true"/>-->
-<!--    <item android:drawable="@drawable/banner_tab_indicator_default"/>-->
+&lt;!&ndash;    <item android:drawable="@drawable/banner_tab_indicator_default" android:state_selected="true"/>&ndash;&gt;
+&lt;!&ndash;    <item android:drawable="@drawable/banner_tab_indicator_default"/>&ndash;&gt;
     <item android:state_selected="true">
         <shape>
             <corners android:radius="20dp"/>
             <solid android:color="@color/box_stroke_color"/>
         </shape>
     </item>
-    <!--<item>
+    &lt;!&ndash;<item>
         <shape>
             <corners android:radius="20dp"/>
             <solid android:color="@android:color/transparent"/>
         </shape>
-    </item>-->
-</selector>
+    </item>&ndash;&gt;
+</selector>-->
+<shape android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#3c67bd"/>
+    <corners android:radius="100dp"/>
+</shape>
