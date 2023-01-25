@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/contact_bg"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/round_arrow_back"
+                android:background="#3f64b4"
+                android:contentDescription="back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/place_holder"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="3dp"
+                app:riv_corner_radius="50dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/back"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/profile_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User@gmail.com"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 9876598765"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="History"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            app:drawableLeftCompat="@drawable/round_arrow_forward"
+            app:drawableRightCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/history"/>
+
+        <TextView
+            android:id="@+id/old_cashflow_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Old Cashflow Summary"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/history"
+            app:drawableLeftCompat="@drawable/round_arrow_forward"
+            app:drawableRightCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/old_cashflow_summary"/>
+
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Notifications"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/old_cashflow_summary"
+            app:drawableLeftCompat="@drawable/round_arrow_forward"
+            app:drawableRightCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/notification"/>
+
+        <TextView
+            android:id="@+id/security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Security"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/notification"
+            app:drawableLeftCompat="@drawable/round_arrow_forward"
+            app:drawableRightCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/security"/>
+
+        <TextView
+            android:id="@+id/help_and_support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Help and Support"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/security"
+            app:drawableLeftCompat="@drawable/round_arrow_forward"
+            app:drawableRightCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/help_and_support"/>
+
+        <TextView
+            android:id="@+id/term_and_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Terms and Conditions"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            app:layout_constraintTop_toBottomOf="@id/help_and_support"
+            app:drawableRightCompat="@drawable/round_arrow_forward"
+            app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#D8D8D8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/term_and_conditions"/>
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Logout"
+            android:textSize="20sp"
+            android:textColor="#CC000000"
+            android:clickable="true"
+            android:contextClickable="true"
+            app:layout_constraintTop_toBottomOf="@id/term_and_conditions"
+            app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -16,6 +16,7 @@ import com.jsa.analytics.R;
 import com.jsa.analytics.databinding.ActivityDashboardBinding;
 import com.jsa.analytics.ui.fragment.HomeFragment;
 import com.jsa.analytics.ui.fragment.InsightFragment;
+import com.jsa.analytics.ui.fragment.ProfileFragment;
 
 public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -55,7 +56,10 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 Toast.makeText(this, "Event", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.profile:
-                Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                transaction.replace(binding.homeContainer.getId(),new ProfileFragment());
+                transaction.commit();
                 return true;
             default:
                 Toast.makeText(this, "default", Toast.LENGTH_SHORT).show();
