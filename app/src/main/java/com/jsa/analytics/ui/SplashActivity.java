@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,8 @@ public class SplashActivity extends AppCompatActivity {
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser!=null){
-            startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+            Log.i("TAG", "onCreate: "+mUser);
+            startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
             finish();
         }else {
             startActivity(new Intent(getApplicationContext(),OnBoardingActivity.class));

@@ -12,4 +12,6 @@
     <color name="cursor_color">#000000</color>
     <color name="textview_divider">#5C5C5C</color>
     <color name="red">#D32F2F</color>
+
+    <color name="app_blue">#3a67be</color>
 </resources>

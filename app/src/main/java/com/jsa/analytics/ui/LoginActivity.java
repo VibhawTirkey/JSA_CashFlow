@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         if (mUser != null){
-            startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+            startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
             finish();
         }
 
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else {
                         AppSharedPreferenceManager.clearUserData(getApplicationContext());
                     }
-                    startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+                    startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
                     finish();
                 }else {
                     binding.passContainer.setHelperText(task.toString());

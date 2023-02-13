@@ -1,5 +1,6 @@
 package com.jsa.analytics.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,7 @@ public class HomeItemFragment extends Fragment {
         // Required empty public constructor
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class HomeItemFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
         //banner
         getBannerData();
 
@@ -152,6 +155,8 @@ public class HomeItemFragment extends Fragment {
     }
 
     private void stopBannerSlider(){
-        timer.cancel();
+//        timer.cancel();
     }
+
+
 }

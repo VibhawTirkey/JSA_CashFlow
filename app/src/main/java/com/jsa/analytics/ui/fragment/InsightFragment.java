@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.jsa.analytics.R;
+import com.jsa.analytics.adapter.InsightAdapter;
 import com.jsa.analytics.databinding.FragmentInsightBinding;
 
 public class InsightFragment extends Fragment {
@@ -32,6 +33,9 @@ public class InsightFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentInsightBinding.inflate(inflater,container,false);
 
+        InsightAdapter adapter = new InsightAdapter(getFragmentManager());
+        binding.viewPager.setAdapter(adapter);
+        binding.tabLayout.setupWithViewPager(binding.viewPager);
 
         return binding.getRoot();
     }

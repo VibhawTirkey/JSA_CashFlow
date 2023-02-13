@@ -3,6 +3,18 @@
     <group>
 
         <item
+            android:id="@+id/home"
+            android:title="Home"
+            android:icon="@drawable/ic_outline_bar_chart"/>
+        <item
+            android:id="@+id/balance"
+            android:title="Balance"
+            android:icon="@drawable/ic_outline_bar_chart"/>
+        <item
+            android:id="@+id/cash_flow"
+            android:title="Cashflow"
+            android:icon="@drawable/ic_outline_bar_chart"/>
+        <item
             android:id="@+id/dashboard"
             android:title="Business Dashboard"
             android:icon="@drawable/ic_outline_bar_chart"/>

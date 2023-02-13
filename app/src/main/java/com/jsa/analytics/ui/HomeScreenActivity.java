@@ -101,18 +101,12 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         headerView();
         //header
 
-        binding.viewMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),HomeExtendActivity.class));
-            }
-        });
     }
 
     private void headerView() {
         View headerView = binding.navView.getHeaderView(0);
         HomeNavHeaderLayoutBinding headerLayoutBinding =HomeNavHeaderLayoutBinding.bind(headerView);
-        headerLayoutBinding.email.setText(firebaseUser.getEmail());
+//        headerLayoutBinding.email.setText(firebaseUser.getEmail());
     }
 
     private void getBannerData() {

@@ -104,7 +104,7 @@ public class SignupActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(SignupActivity.this, "Successfully Signed up", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
                                         finish();
                                     }else {
                                         Toast.makeText(SignupActivity.this, "Please try again", Toast.LENGTH_SHORT).show();

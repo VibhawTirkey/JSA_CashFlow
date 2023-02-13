@@ -159,7 +159,7 @@ public class CashFlowDashboardActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         if (isTaskRoot()){
-            startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));
+            startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
             finish();
         }else {
             finish();

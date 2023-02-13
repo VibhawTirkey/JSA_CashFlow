@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3a67be"
+    tools:context=".ui.fragment.PremiumHomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Hey, User!"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/greet_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
+            android:text="Good Morning"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/agenda_bg"
+            app:layout_constraintTop_toBottomOf="@id/greet_time">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Features"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/features_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See All"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:text="Net Profit Graph"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/actual_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:cs_circle_style = "round"
+                app:cs_progress = "5555"
+                app:cs_max = "22805"
+                app:cs_circle_fill = "@android:color/transparent"
+                app:cs_circle_color = "#1A000000"
+                app:cs_circle_progress_color = "#3a67be"
+                app:cs_disable_pointer = "true"
+                app:cs_circle_stroke_width = "15dp"
+                app:cs_start_angle = "135"
+                app:cs_end_angle = "45"
+                app:layout_constraintWidth_percent=".4"
+                app:layout_constraintHorizontal_bias=".1"
+                app:layout_constraintTop_toBottomOf="@id/text2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/actual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22805"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_bias=".7"
+                app:layout_constraintStart_toStartOf="@id/actual_indicator"
+                app:layout_constraintEnd_toEndOf="@id/actual_indicator"
+                app:layout_constraintTop_toTopOf="@id/actual_indicator"
+                app:layout_constraintBottom_toBottomOf="@id/actual_indicator"/>
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actual"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_bias=".7"
+                app:layout_constraintTop_toBottomOf="@id/actual_indicator"
+                app:layout_constraintStart_toStartOf="@id/actual_indicator"
+                app:layout_constraintEnd_toEndOf="@id/actual_indicator"/>
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/plan_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:cs_circle_style = "round"
+                app:cs_progress = "9999"
+                app:cs_max = "22805"
+                app:cs_circle_fill = "@android:color/transparent"
+                app:cs_circle_color = "#1A000000"
+                app:cs_circle_progress_color = "#3a67be"
+                app:cs_disable_pointer = "true"
+                app:cs_circle_stroke_width = "15dp"
+                app:cs_start_angle = "135"
+                app:cs_end_angle = "45"
+                app:layout_constraintWidth_percent=".4"
+                app:layout_constraintHorizontal_bias=".9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text2"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22805"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_bias=".7"
+                app:layout_constraintStart_toStartOf="@id/plan_indicator"
+                app:layout_constraintEnd_toEndOf="@id/plan_indicator"
+                app:layout_constraintTop_toTopOf="@id/plan_indicator"
+                app:layout_constraintBottom_toBottomOf="@id/plan_indicator"/>
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plan"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_bias=".7"
+                app:layout_constraintTop_toBottomOf="@id/plan_indicator"
+                app:layout_constraintStart_toStartOf="@id/plan_indicator"
+                app:layout_constraintEnd_toEndOf="@id/plan_indicator"/>
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:weightSum="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text3"
+                app:layout_constraintWidth_percent=".9">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:contentDescription="CashFlow"
+                        android:src="@drawable/ic_outline_account_circle"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="CashFlow"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:contentDescription="Videos"
+                        android:src="@drawable/ic_outline_account_circle"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Videos"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:contentDescription="insight"
+                        android:src="@drawable/ic_outline_account_circle"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Insight"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:contentDescription="History"
+                        android:src="@drawable/ic_outline_account_circle"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="History"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:contentDescription="others"
+                        android:src="@drawable/ic_outline_account_circle"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Others"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/banner_strip"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/header_img"
+                android:contentDescription="banner"
+                app:layout_constraintTop_toBottomOf="@id/linear_layout"/>
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Articles"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_strip"/>
+
+            <TextView
+                android:id="@+id/see_all_articles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="See All"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/text5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text5" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/article_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/text5"/>
+
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Book Events in 3 easy steps"
+                app:layout_constraintTop_toBottomOf="@id/article_list_view"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textSize="16sp"
+                android:text="Book Events in 3 easy steps"
+                app:layout_constraintTop_toBottomOf="@id/text6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+            <TextView
+                android:id="@+id/text8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textSize="16sp"
+                android:text="Book Events in 3 easy steps"
+                app:layout_constraintTop_toBottomOf="@id/text7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+            <TextView
+                android:id="@+id/text9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingBottom="40dp"
+                android:textSize="16sp"
+                android:text="Book Events in 3 easy steps"
+                app:layout_constraintTop_toBottomOf="@id/text8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toTopOf="@id/body_container">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="#def2ff">
+
+                <TextView
+                    android:id="@+id/event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monday,May 12"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableLeftCompat="@drawable/round_arrow_forward" />
+                <TextView
+                    android:id="@+id/event_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:00 - 12:00 Am"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableLeftCompat="@drawable/round_arrow_forward" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
