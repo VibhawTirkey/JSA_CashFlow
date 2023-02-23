@@ -6,31 +6,286 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.HomeItemFragment">
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/banner_viewpager"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="10dp"
-        android:contentDescription="banner"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:background="#D5D5D5"
-        app:layout_constraintBottom_toBottomOf="@id/linear_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/linear_layout"
-        app:layout_constraintVertical_bias=".4"
-        app:layout_constraintWidth_percent=".7" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <LinearLayout
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/banner_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="banner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@drawable/home_button_container_bg"
+                app:layout_constraintTop_toBottomOf="@id/banner_viewpager">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/business_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Business Dashboard"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/videos"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_business_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business\nDashboard"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/business_dashboard"
+                    app:layout_constraintEnd_toEndOf="@id/business_dashboard"
+                    app:layout_constraintTop_toBottomOf="@id/business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Videos"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/insight"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/business_dashboard"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YT Videos"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/videos"
+                    app:layout_constraintEnd_toEndOf="@id/videos"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/insight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Insight"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/ask_your_question"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/videos"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_insight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insight"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/insight"
+                    app:layout_constraintEnd_toEndOf="@id/insight"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/ask_your_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Ask Your Question"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/help"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/insight"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_ask_your_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ask Your\nQuestion"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/ask_your_question"
+                    app:layout_constraintEnd_toEndOf="@id/ask_your_question"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Help"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ask_your_question"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/help"
+                    app:layout_constraintEnd_toEndOf="@id/help"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#D5D5D5"
+                    app:layout_constraintStart_toStartOf="@id/business_dashboard"
+                    app:layout_constraintEnd_toEndOf="@id/help"
+                    app:layout_constraintBottom_toBottomOf="@id/business_dashboard"
+                    app:layout_constraintTop_toTopOf="@id/business_dashboard"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="60dp"
+                android:background="@drawable/home_bottom_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_container">
+
+                <TextView
+                    android:id="@+id/video_view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:padding="5dp"
+                    android:text="View all"
+                    android:textSize="18sp"
+                    android:textColor="#3f64b4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Hi User"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/video_view_all" />
+
+                <TextView
+                    android:id="@+id/greet_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Good Morning"
+                    android:textSize="16sp"
+                    android:textColor="#CC000000"
+                    app:layout_constraintStart_toStartOf="@id/textView1"
+                    app:layout_constraintTop_toBottomOf="@id/textView1"/>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Here a suggestion of curated suggested videos just for you"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/greet_time" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/video_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/textView2"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_home_video" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Testimonials"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/textView1"
+                    app:layout_constraintTop_toBottomOf="@id/video_list"/>
+
+                <TextView
+                    android:id="@+id/testimonial_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:padding="5dp"
+                    android:text="View all"
+                    android:textColor="#3f64b4"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView3"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/testimonial_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_testimonial"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/testimonial_all"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+    <!--<LinearLayout
         android:id="@+id/linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:weightSum="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,62 +411,7 @@
                 android:text="Others"
                 android:textStyle="bold" />
         </LinearLayout>
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/home_bottom_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout">
-
-        <TextView
-            android:id="@+id/view_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="25dp"
-            android:padding="5dp"
-            android:text="View all"
-            android:textColor="#3f64b4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Hi User"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_all" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Here a suggestion of curated suggested videos just for you"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView1" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/video_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView2"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_home_video" />
+    </LinearLayout>-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

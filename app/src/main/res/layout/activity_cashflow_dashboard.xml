@@ -27,6 +27,7 @@
       android:id="@+id/table_view"
       android:layout_width="match_parent"
       android:layout_height="0dp"
+      tools:listitem="@layout/month_output_item"
       app:layout_constraintTop_toBottomOf="@id/app_bar"
       app:layout_constraintBottom_toBottomOf="parent"/>
 

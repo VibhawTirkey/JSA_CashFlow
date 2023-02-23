@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/guidance_container_bg"
+    android:padding="15dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BONUS 1"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textAllCaps="true"
+        android:textColor="@color/toolbar_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/toolbar_blue"
+        android:text="On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

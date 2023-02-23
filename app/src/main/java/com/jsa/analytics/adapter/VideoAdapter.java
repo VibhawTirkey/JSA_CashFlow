@@ -11,20 +11,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jsa.analytics.databinding.ItemHomeVideoBinding;
+import com.jsa.analytics.databinding.ItemVideoBinding;
 
-public class HomeVideoAdapter extends RecyclerView.Adapter<HomeVideoAdapter.VideoViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
     Context context;
     String id = "DjokXL8ZHSQ";
 
-    public HomeVideoAdapter(Context context) {
+    public VideoAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemHomeVideoBinding binding = ItemHomeVideoBinding.inflate(LayoutInflater.from(context),parent,false);
+        ItemVideoBinding binding = ItemVideoBinding.inflate(LayoutInflater.from(context),parent,false);
         return new VideoViewHolder(binding);
     }
 
@@ -44,18 +44,17 @@ public class HomeVideoAdapter extends RecyclerView.Adapter<HomeVideoAdapter.Vide
                 }
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 15;
     }
 
     public class VideoViewHolder extends RecyclerView.ViewHolder {
-
-        ItemHomeVideoBinding binding;
-
-        public VideoViewHolder(ItemHomeVideoBinding binding) {
+        ItemVideoBinding binding;
+        public VideoViewHolder(ItemVideoBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

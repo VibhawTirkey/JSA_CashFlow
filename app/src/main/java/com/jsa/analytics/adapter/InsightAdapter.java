@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.jsa.analytics.ui.fragment.ArticleFragment;
 import com.jsa.analytics.ui.fragment.ContactFragment;
+import com.jsa.analytics.ui.fragment.EventFragment;
 import com.jsa.analytics.ui.fragment.NotificationFragment;
+import com.jsa.analytics.ui.fragment.PremiumHomeFragment;
 
 public class InsightAdapter extends FragmentPagerAdapter {
 
@@ -20,9 +23,9 @@ public class InsightAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         if (position == 0 ){
-            fragment = new NotificationFragment();
+            fragment = new ArticleFragment();
         }else if (position == 1){
-            fragment = new ContactFragment();
+            fragment = new EventFragment();
         }
         return fragment;
     }

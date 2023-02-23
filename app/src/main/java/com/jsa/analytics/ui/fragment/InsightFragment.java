@@ -18,6 +18,7 @@ import com.jsa.analytics.databinding.FragmentInsightBinding;
 public class InsightFragment extends Fragment {
 
     FragmentInsightBinding binding;
+    InsightAdapter adapter;
 
     public InsightFragment() {
         // Required empty public constructor
@@ -33,7 +34,7 @@ public class InsightFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentInsightBinding.inflate(inflater,container,false);
 
-        InsightAdapter adapter = new InsightAdapter(getFragmentManager());
+        adapter = new InsightAdapter(getFragmentManager());
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
 

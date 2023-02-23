@@ -43,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:contentDescription="Home Tabs"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="#3c67bd"
@@ -63,7 +64,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Agenda"/>
+            android:text="Our Agenda"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -88,10 +89,12 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="Add new"
         app:backgroundTint="#3c67bd"
         android:src="@drawable/round_add"
         app:tint="@color/white"

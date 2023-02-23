@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="Guidance"
+        app:titleTextColor="@color/white"
         android:background="@drawable/home_bg_top"
-        app:navigationIcon="@drawable/ic_round_arrow_back"
+        app:navigationIcon="@drawable/round_arrow_back"
         app:menu="@menu/home_toolbar_menu"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -26,11 +27,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="#3A66BD"
+                android:textSize="18sp"
+                android:text="What will you get when you join?"
+                android:background="@drawable/guidance_container_bg"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/guidance_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_guidance"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     
 
 </androidx.constraintlayout.widget.ConstraintLayout>

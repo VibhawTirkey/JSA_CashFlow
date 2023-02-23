@@ -6,6 +6,9 @@
             android:id="@+id/home"
             android:title="Home"
             android:icon="@drawable/ic_outline_bar_chart"/>
+        <item android:id="@+id/edit_profile"
+            android:title="Edit Profile"
+            android:icon="@drawable/ic_outline_bar_chart"/>
         <item
             android:id="@+id/balance"
             android:title="Balance"

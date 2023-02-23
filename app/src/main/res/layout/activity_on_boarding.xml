@@ -10,35 +10,35 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="10dp"
         android:text="LOGIN"
         android:textSize="18sp"
-        android:padding="10dp"
-        android:fontFamily="@font/nunito_bold"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias=".95"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintHorizontal_bias=".95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="350dp"
         android:src="@drawable/ic_pie_chart"
-        app:layout_constraintWidth_percent=".9"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login"
+        app:layout_constraintWidth_percent=".9" />
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
         android:text="Let's Get\nStarted"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:fontFamily="@font/nunito_bold"
         app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintStart_toStartOf="@id/image"
         app:layout_constraintTop_toBottomOf="@id/image" />
@@ -47,13 +47,13 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
         android:text="Everything works better together!"
         android:textSize="16sp"
-        android:fontFamily="@font/nunito_bold"
-        app:layout_constraintVertical_bias=".2"
         app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/text" />
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintVertical_bias=".2" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -61,11 +61,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
+        android:fontFamily="@font/nunito_regular"
+        android:padding="15dp"
         android:text="SIGN UP"
         android:textSize="18sp"
         app:cornerRadius="25dp"
-        android:padding="15dp"
-        android:fontFamily="@font/nunito_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/image"
         app:layout_constraintStart_toStartOf="@+id/image"

@@ -16,11 +16,13 @@
             android:id="@+id/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="40dp"
+            android:padding="30dp"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:background="@drawable/agenda_border"
             android:text="Thousands of business owners are already benefited from Jagmohan's strategies. Hundreds among them are already on JSA Online to learn secrets to flood their life with cash-flow."
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -28,70 +30,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
             android:background="@drawable/agenda_bg"
             app:layout_constraintTop_toBottomOf="@id/textview">
 
-            <TextView
-                android:id="@+id/text"
+            <LinearLayout
+                android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="How will it happen?"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:padding="30dp"
+                android:background="@drawable/agenda_border"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="When you join, Jagmohan Singh and his team shall help you install five absolutely essential tools in your business to help you get on the fast track to big profits. \n These Five essentials tools are:"
-                android:textColor="#CC000000"
-                app:layout_constraintTop_toBottomOf="@id/text"/>
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="How will it happen?"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/text2"
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="When you join, Jagmohan Singh and his team shall help you install five absolutely essential tools in your business to help you get on the fast track to big profits. \n These Five essentials tools are:"
+                    android:textColor="#CC000000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Financial Summary"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/text1"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="30dp"
+                android:orientation="vertical"
+                android:background="@drawable/agenda_border"
+                app:layout_constraintTop_toBottomOf="@id/linear">
 
-            <TextView
-                android:id="@+id/text3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="MIS fromAccounts &amp; Finance"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/text2"/>
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Financial Summary"
+                    android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/text4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Working Capital"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/text3"/>
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MIS fromAccounts &amp; Finance"
+                    android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/text5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cash Flow Model"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/text4"/>
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Working Capital"
+                    android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/text6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Net Worth of Business"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/text5"/>
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cash Flow Model"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Net Worth of Business"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

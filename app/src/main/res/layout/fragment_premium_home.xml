@@ -175,138 +175,178 @@
                 app:layout_constraintStart_toStartOf="@id/plan_indicator"
                 app:layout_constraintEnd_toEndOf="@id/plan_indicator"/>
 
-            <LinearLayout
-                android:id="@+id/linear_layout"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@drawable/home_button_container_bg"
+                app:layout_constraintTop_toBottomOf="@id/text3">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/business_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Business Dashboard"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/videos"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_business_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business\nDashboard"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/business_dashboard"
+                    app:layout_constraintEnd_toEndOf="@id/business_dashboard"
+                    app:layout_constraintTop_toBottomOf="@id/business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Videos"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/insight"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/business_dashboard"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YT Videos"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/videos"
+                    app:layout_constraintEnd_toEndOf="@id/videos"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/insight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Insight"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/ask_your_question"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/videos"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_insight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insight"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/insight"
+                    app:layout_constraintEnd_toEndOf="@id/insight"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/ask_your_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Ask Your Question"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/help"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/insight"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_ask_your_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ask Your\nQuestion"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/ask_your_question"
+                    app:layout_constraintEnd_toEndOf="@id/ask_your_question"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:contentDescription="Help"
+                    android:src="@drawable/ic_outline_account_circle"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ask_your_question"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunito_bold"
+                    app:layout_constraintStart_toStartOf="@id/help"
+                    app:layout_constraintEnd_toEndOf="@id/help"
+                    app:layout_constraintTop_toTopOf="@id/label_business_dashboard"
+                    app:layout_constraintBottom_toBottomOf="@id/label_business_dashboard"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:weightSum="5"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Testimonials"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text3"
-                app:layout_constraintWidth_percent=".9">
+                app:layout_constraintTop_toBottomOf="@id/button_container"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/testimonial_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:padding="5dp"
+                android:text="See More"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textView3"/>
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:contentDescription="CashFlow"
-                        android:src="@drawable/ic_outline_account_circle"
-                        app:backgroundTint="@color/white" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="CashFlow"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:contentDescription="Videos"
-                        android:src="@drawable/ic_outline_account_circle"
-                        app:backgroundTint="@color/white" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Videos"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:contentDescription="insight"
-                        android:src="@drawable/ic_outline_account_circle"
-                        app:backgroundTint="@color/white" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Insight"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:contentDescription="History"
-                        android:src="@drawable/ic_outline_account_circle"
-                        app:backgroundTint="@color/white" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="History"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:contentDescription="others"
-                        android:src="@drawable/ic_outline_account_circle"
-                        app:backgroundTint="@color/white" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Others"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/testimonial_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:itemCount="2"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_testimonial"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/testimonial_all"/>
 
             <ImageView
                 android:id="@+id/banner_strip"
@@ -316,7 +356,39 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/header_img"
                 android:contentDescription="banner"
-                app:layout_constraintTop_toBottomOf="@id/linear_layout"/>
+                app:layout_constraintTop_toBottomOf="@id/testimonial_list"/>
+
+            <TextView
+                android:id="@+id/text10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Videos"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_strip"/>
+
+            <TextView
+                android:id="@+id/see_all_videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:text="See More"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="@id/text10"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/video_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/text10"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_home_video" />
 
             <TextView
                 android:id="@+id/text5"
@@ -326,15 +398,15 @@
                 android:layout_marginTop="30dp"
                 android:text="Articles"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/banner_strip"/>
+                app:layout_constraintTop_toBottomOf="@id/video_list"/>
 
             <TextView
                 android:id="@+id/see_all_articles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="18dp"
                 android:text="See All"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/text5"

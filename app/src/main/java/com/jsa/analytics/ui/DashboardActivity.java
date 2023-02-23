@@ -72,6 +72,9 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 transaction.replace(binding.homeContainer.getId(),homeFragment);
                 transaction.commit();
                 return true;
+            case R.id.edit_profile:
+                startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
+                break;
             case R.id.report:
                 transaction.replace(binding.homeContainer.getId(),insightFragment);
                 transaction.commit();
