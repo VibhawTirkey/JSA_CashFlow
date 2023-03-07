@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -72,6 +73,12 @@ public class CashFlowDashboardActivity extends AppCompatActivity {
     );
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        binding.loader.setAnimation("Loader_v4.json");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCashflowDashboardBinding.inflate(getLayoutInflater());
@@ -115,6 +122,7 @@ public class CashFlowDashboardActivity extends AppCompatActivity {
                             TableViewAdapter adapter = new TableViewAdapter(getApplicationContext(),date,inputModels);
                             binding.tableView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
                             binding.tableView.setAdapter(adapter);
+                            binding.loader.setVisibility(View.GONE);
                         }else {
                             Toast.makeText(CashFlowDashboardActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
                         }

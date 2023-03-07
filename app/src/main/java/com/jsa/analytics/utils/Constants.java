@@ -1,7 +1,6 @@
 package com.jsa.analytics.utils;
 
 public interface Constants {
-
     String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     //fragment actions

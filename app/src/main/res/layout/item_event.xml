@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintWidth_percent=".5"
         app:cardCornerRadius="12dp"
@@ -32,13 +32,17 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="RAKBAR AT 2021"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintEnd_toStartOf="@+id/date"
                 app:layout_constraintStart_toStartOf="@id/event_img"
-                app:layout_constraintTop_toBottomOf="@id/event_img"/>
+                app:layout_constraintTop_toBottomOf="@id/event_img" />
 
             <TextView
                 android:id="@+id/date"

@@ -23,6 +23,8 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:background="@drawable/agenda_border"
+            android:drawablePadding="20dp"
+            android:drawableStart="@drawable/ic_pointer_right"
             android:text="Thousands of business owners are already benefited from Jagmohan's strategies. Hundreds among them are already on JSA Online to learn secrets to flood their life with cash-flow."
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -80,35 +82,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Financial Summary"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/financial_summery_icon"/>
 
                 <TextView
                     android:id="@+id/text3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MIS fromAccounts &amp; Finance"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/accounts_finance_icon"/>
 
                 <TextView
                     android:id="@+id/text4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Working Capital"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/working_capital_icon"/>
 
                 <TextView
                     android:id="@+id/text5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cash Flow Model"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/cash_flow_icon"/>
 
                 <TextView
                     android:id="@+id/text6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Net Worth of Business"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/net_worth_icon"/>
 
             </LinearLayout>
 

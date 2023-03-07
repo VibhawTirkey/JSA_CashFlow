@@ -13,4 +13,38 @@ And, the only system that can help you master this science is...</string>
     <string name="intro_2">This uniquely conceptualized system will empower you with extremely easy yet incredibly powerful skills, strategies and techniques to propel cash flow in your business and help you become unstoppable in your pursuit of entrepreneurial success.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="article_content">Philippine fintech startup Lista has raised about $5.1 million in Series A funding led by Singapore-based Openspace Ventures, an early backer of Indonesia\'s Gojek and 30 Under 30 Asia honoree Rexy Josh Dorado\'s Manila-based social media site Kumu.
+
+The round included existing investors 1982 Ventures, East Ventures (whose portfolio includes Southeast Asian online travel giant Traveloka, Indonesian fintech unicorn Xendit and Indonesian e-commerce company Tokopedia—which merged with Gojek last year to form GoTo Group) and Saison Capital, the venture capital arm of Japanese credit card company Credit Saison. Kumu cofounders Dorado and Roland Ros, among others, joined the round as angel investors.
+
+“We are grateful for the trust these investors have given, not just in us, but in the vast potential of the rapidly developing fintech industry in the Philippines," Aaron Villegas, cofounder and CEO of Lista, said in a statement. In February, PayMongo, another Philippine fintech startup, raised $31 million in Series B funding from investors including Tinder cofounder Justin Mateen’s JAM Fund and Philippine venture capital firms ICCP SBI Venture Partners and Kaya Founders, which is led by Lisa Gokongwei, a member of the billionaire family that controls the JG Summit conglomerate.
+
+"We continue to grow organically at a very accelerated pace, but we also seek out opportunities beyond what we are doing. We have a very aggressive pipeline," added Villegas.
+
+Villegas cofounded Lista with Khriz Lim in September 2021. The startup says it has had more than 1 million downloads since its launch.
+
+Lista said the fresh funds will be used to expand beyond business management tools and develop products specific to personal finances for individual users. “About 30% of our user base are Filipinos who do not have any business but want to take charge of their personal finance," said Lim. "They monitor their salary, bills payment, and even savings using Lista. We believe this is a category that holds a lot of growth potential for us."</string>
+
+    <string name="terms_and_conditions">\n<b><font size="20">1. Clause 1</font></b>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.
+    \n<b><font size="20">2. Clause 2</font></b>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.
+    \n<b><font size="20">3. Clause 3</font></b>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.</string>
+
+    <string name="privacy_policy">Your privacy is important to us. It is Brainstorming\'s policy to respect your privacy regarding any information we may collect from you across our website, and other sites we own and operate.
+
+We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.
+
+We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.
+
+We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</string>
+
+    <string name="security">Your Security of data is important to us. It is Brainstorming\'s policy to respect your privacy&amp; security regarding any information we may collect from you across our website, and other sites we own and operate.
+
+We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.
+
+We only retain collected information for as long as necessary to provide you with your requested service. </string>
 </resources>

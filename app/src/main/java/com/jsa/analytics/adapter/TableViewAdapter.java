@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.AutoTransition;
+import androidx.transition.TransitionManager;
 
 import com.jsa.analytics.databinding.ActivityAnalyticsOutputBinding;
+import com.jsa.analytics.databinding.ItemCashflowDashboardMonthBinding;
 import com.jsa.analytics.databinding.MonthOutputItemBinding;
 import com.jsa.analytics.model.InputModel;
 import com.jsa.analytics.ui.AnalyticsOutputActivity;
@@ -39,7 +42,7 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.Tabl
     @NonNull
     @Override
     public TableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MonthOutputItemBinding binding = MonthOutputItemBinding.inflate(LayoutInflater.from(context),parent,false);
+        ItemCashflowDashboardMonthBinding binding = ItemCashflowDashboardMonthBinding.inflate(LayoutInflater.from(context),parent,false);
         return new TableViewHolder(binding);
     }
 
@@ -53,6 +56,21 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.Tabl
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        holder.binding.headContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.binding.tableContainer.getVisibility() == View.VISIBLE){
+                    TransitionManager.beginDelayedTransition(holder.binding.getRoot(), new AutoTransition());
+                    holder.binding.tableContainer.setVisibility(View.GONE);
+//                    holder.binding.indicator.setImageResource(R.drawable.round_arrow_forward);
+                }else {
+                    TransitionManager.beginDelayedTransition(holder.binding.getRoot(), new AutoTransition());
+                    holder.binding.tableContainer.setVisibility(View.VISIBLE);
+//                    holder.binding.indicator.setImageResource(R.drawable.round_add);
+                }
+            }
+        });
 
         Double actualGpp = inputModel.getFinancialSummary().getGrossProfitRatio().getActualData()==null?0:inputModel.getFinancialSummary().getGrossProfitRatio().getActualData();
         Double planGpp = inputModel.getFinancialSummary().getGrossProfitRatio().getExpectedData()==null?0:inputModel.getFinancialSummary().getGrossProfitRatio().getExpectedData();
@@ -197,8 +215,8 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.Tabl
     }
 
     public class TableViewHolder extends RecyclerView.ViewHolder {
-        private MonthOutputItemBinding binding;
-        public TableViewHolder(MonthOutputItemBinding binding) {
+        private ItemCashflowDashboardMonthBinding binding;
+        public TableViewHolder(ItemCashflowDashboardMonthBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

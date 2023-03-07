@@ -17,9 +17,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:title="Dashboard"
-        app:navigationIcon="@drawable/ic_round_arrow_back"/>
+        android:background="@color/toolbar_blue"
+        app:title="Business Dashboard"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/round_arrow_back"/>
 
   </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,6 +29,15 @@
       android:layout_width="match_parent"
       android:layout_height="0dp"
       tools:listitem="@layout/month_output_item"
+      app:layout_constraintTop_toBottomOf="@id/app_bar"
+      app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <com.airbnb.lottie.LottieAnimationView
+      android:id="@+id/loader"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:lottie_autoPlay="true"
+      app:lottie_loop="true"
       app:layout_constraintTop_toBottomOf="@id/app_bar"
       app:layout_constraintBottom_toBottomOf="parent"/>
 

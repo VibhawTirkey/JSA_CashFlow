@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             app:title="Notifications"
             app:titleTextColor="@color/white"
-            app:navigationIcon="@drawable/ic_round_arrow_back"/>
+            app:navigationIcon="@drawable/round_arrow_back"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -27,6 +27,7 @@
         android:id="@+id/notification_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_notification"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

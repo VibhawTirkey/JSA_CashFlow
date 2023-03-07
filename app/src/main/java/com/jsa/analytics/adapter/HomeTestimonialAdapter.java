@@ -8,14 +8,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.jsa.analytics.databinding.ItemTestimonialBinding;
+import com.jsa.analytics.model.TestimonialModel;
+
+import java.util.List;
 
 public class HomeTestimonialAdapter extends RecyclerView.Adapter<HomeTestimonialAdapter.TestimonialViewHolder> {
 
     Context context;
+    List<TestimonialModel> list;
 
-    public HomeTestimonialAdapter(Context context) {
+    public HomeTestimonialAdapter(Context context, List<TestimonialModel> list) {
         this.context = context;
+        this.list = list;
     }
 
     @NonNull
@@ -27,12 +33,16 @@ public class HomeTestimonialAdapter extends RecyclerView.Adapter<HomeTestimonial
 
     @Override
     public void onBindViewHolder(@NonNull TestimonialViewHolder holder, int position) {
-
+        TestimonialModel data = list.get(position);
+        Glide.with(context).load(data.getProfile_img()).centerCrop()
+                .into(holder.binding.image);
+        holder.binding.name.setText(data.getName());
+        holder.binding.description.setText(data.getContent());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return list.size();
     }
 
     public class TestimonialViewHolder extends RecyclerView.ViewHolder {

@@ -53,5 +53,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'me.tankery.lib:circularSeekBar:1.4.1'
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/auth_bg"
     tools:context=".ui.LoginActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -49,7 +50,7 @@
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/nunito_regular"
         android:text="Enter your credentials to continue"
-        app:layout_constraintVertical_bias=".4"
+        app:layout_constraintVertical_bias=".1"
         app:layout_constraintBottom_toTopOf="@+id/user_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text" />
@@ -65,7 +66,7 @@
         app:startIconDrawable="@drawable/ic_user"
         app:boxStrokeColor="@color/box_stroke_color"
         app:hintTextColor="@color/black"
-        app:layout_constraintVertical_bias=".4"
+        app:layout_constraintVertical_bias=".2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
         <EditText
@@ -121,6 +122,7 @@
         android:padding="10dp"
         android:fontFamily="@font/nunito_regular"
         android:text="Forgot Password?"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pass_container" />
 
@@ -134,32 +136,49 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="@color/black"
         android:fontFamily="@font/nunito_regular"
         android:padding="10dp"
-        android:text="LOGIN"
+        android:text="Login Now"
+        android:textAllCaps="false"
         android:textSize="18sp"
-        app:cornerRadius="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2"/>
+        app:backgroundTint="@color/toolbar_blue"
+        app:cornerRadius="5dp"
+        app:layout_constraintWidth_percent=".9"
+        app:layout_constraintTop_toBottomOf="@+id/save_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="20dp"
+        android:background="#33000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintWidth_percent=".9" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signup"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        app:cornerRadius="25dp"
+        android:layout_margin="20dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/nunito_regular"
-        app:layout_constraintTop_toBottomOf="@id/login"
-        android:text="Opps...I dont,t have an Account yet"/>
+        android:padding="10dp"
+        android:text="Opps...I dont,t have an Account yet"
+        android:textAllCaps="false"
+        android:textColor="@color/toolbar_blue"
+        app:strokeColor="#4D3A66BD"
+        app:strokeWidth=".1dp"
+        app:cornerRadius="5dp"
+        app:elevation="6dp"
+        app:layout_constraintWidth_percent=".9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

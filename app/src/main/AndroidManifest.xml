@@ -4,15 +4,28 @@
     package="com.jsa.analytics">
 
     <application
+        android:name=".JsaMainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/jsa_launcher"
+        android:icon="@mipmap/ic_launcher_jsa"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/jsa_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_jsa_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JSACashFlow"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.SecurityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.TermAndConditionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ArticleDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.EditProfileActivity"
             android:exported="false" />

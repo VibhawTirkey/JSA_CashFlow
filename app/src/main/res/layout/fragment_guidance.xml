@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/guidance_bg"
     tools:context=".ui.fragment.GuidanceFragment">
     
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +13,6 @@
         android:layout_height="wrap_content"
         app:title="Guidance"
         app:titleTextColor="@color/white"
-        android:background="@drawable/home_bg_top"
         app:navigationIcon="@drawable/round_arrow_back"
         app:menu="@menu/home_toolbar_menu"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -28,10 +28,27 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Four Invaluable Bonuses for FREE!"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:src="@drawable/four_bonus_imgbooks"
+                app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+            <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:padding="10dp"
@@ -40,7 +57,7 @@
                 android:textSize="18sp"
                 android:text="What will you get when you join?"
                 android:background="@drawable/guidance_container_bg"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/imageview"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/guidance_list"

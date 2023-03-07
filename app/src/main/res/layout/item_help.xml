@@ -27,17 +27,18 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:drawableRight="@drawable/ic_arrow_right_circle"
                 android:text="How would you handle my sensitive data?"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/round_arrow_forward"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -47,11 +48,13 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:visibility="gone"
         android:textSize="18sp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
-        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

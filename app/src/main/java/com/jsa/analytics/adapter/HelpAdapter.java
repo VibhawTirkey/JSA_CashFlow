@@ -43,11 +43,11 @@ public class HelpAdapter extends RecyclerView.Adapter<HelpAdapter.HelpViewHolder
                 if (holder.binding.description.getVisibility() == View.VISIBLE){
                     TransitionManager.beginDelayedTransition(holder.binding.getRoot(), new AutoTransition());
                     holder.binding.description.setVisibility(View.GONE);
-                    holder.binding.indicator.setImageResource(R.drawable.round_arrow_forward);
+                    holder.binding.title.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_right_circle,0);
                 }else {
                     TransitionManager.beginDelayedTransition(holder.binding.getRoot(), new AutoTransition());
                     holder.binding.description.setVisibility(View.VISIBLE);
-                    holder.binding.indicator.setImageResource(R.drawable.round_add);
+                    holder.binding.title.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_down_circle,0);
                 }
             }
         });

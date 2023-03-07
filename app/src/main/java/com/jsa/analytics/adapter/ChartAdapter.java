@@ -20,6 +20,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.slider.LabelFormatter;
+import com.jsa.analytics.R;
 import com.jsa.analytics.databinding.ItemChartBinding;
 import com.jsa.analytics.model.ChartModel;
 
@@ -30,6 +31,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ChartViewHol
 
     Context context;
     List<ChartModel> chartModels;
+    int[] colors = {R.color.app_blue,R.color.a_y_q_red,R.color.a_y_q_green};
 
     public ChartAdapter(Context context, List<ChartModel> chartModels) {
         this.context = context;
@@ -51,7 +53,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ChartViewHol
         data.add(new BarEntry(1,model.getActualData().intValue()));
         data.add(new BarEntry(2,model.getPlanData().intValue()));
         BarDataSet barDataSet = new BarDataSet(data,"Actual Plan");
-        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barDataSet.setColors(new int[]{Color.argb(255,108,93,211),Color.argb(255,160,215,231)});
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
 

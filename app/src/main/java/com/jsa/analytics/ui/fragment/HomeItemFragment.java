@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,7 +33,10 @@ import com.jsa.analytics.databinding.FragmentHomeBinding;
 import com.jsa.analytics.databinding.FragmentHomeItemBinding;
 import com.jsa.analytics.model.BannerModel;
 import com.jsa.analytics.model.BannersModel;
+import com.jsa.analytics.model.TestimonialModel;
 import com.jsa.analytics.ui.AskYourQuestionActivity;
+import com.jsa.analytics.ui.CashFlowDashboardActivity;
+import com.jsa.analytics.ui.DashboardActivity;
 import com.jsa.analytics.ui.HelpActivity;
 import com.jsa.analytics.ui.InsightActivity;
 import com.jsa.analytics.ui.VideoActivity;
@@ -56,7 +60,9 @@ public class HomeItemFragment extends Fragment {
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     private List<BannersModel> bannerImgList = new ArrayList<>();
-    private List<BannerModel> models = new ArrayList<>();
+    private List<BannerModel> bannerModels = new ArrayList<>();
+    private List<TestimonialModel> testimonialModels = new ArrayList<>();
+    HomeTestimonialAdapter testimonialAdapter;
     private BannerAdapter bannerAdapter;
     private int currentPage = 1;
     private Timer timer;
@@ -83,9 +89,9 @@ public class HomeItemFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         setGreetState();
+
         //banner
         getBannerData();
-
         binding.bannerViewpager.setOnTouchListener((view, motionEvent) -> {
             stopBannerSlider();
             if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
@@ -95,16 +101,19 @@ public class HomeItemFragment extends Fragment {
         });
         //banner
 
+        getTestimonialData(); /*TESTIMONIAL*/
+
         //Video Recycler View
         HomeVideoAdapter adapter = new HomeVideoAdapter(getContext());
         binding.videoList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
         binding.videoList.setAdapter(adapter);
 
-        //Testimonial list
-        HomeTestimonialAdapter testimonialAdapter = new HomeTestimonialAdapter(getContext());
-        binding.testimonialList.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-        binding.testimonialList.setAdapter(testimonialAdapter);
-
+        binding.businessDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CashFlowDashboardActivity.class));
+            }
+        });
         binding.insight.setOnClickListener(v -> startActivity(new Intent(getContext(), InsightActivity.class)));
         binding.videoViewAll.setOnClickListener(v -> startActivity(new Intent(getContext(), VideoActivity.class)));
         binding.videos.setOnClickListener(v -> startActivity(new Intent(getContext(), VideoActivity.class)));
@@ -114,12 +123,43 @@ public class HomeItemFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void getTestimonialData() {
+        firebaseFirestore.collection("learning").document("testimonial").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    List<String> keys = new ArrayList<>();
+                    JSONObject obj = new JSONObject(task.getResult().getData());
+                    Iterator<String> iterator = obj.keys();
+                    while (iterator.hasNext()){
+                        String key = iterator.next();
+                        keys.add(key);
+                    }
+                    for (String key:keys){
+                        try {
+                            JSONObject jsonObject = obj.getJSONObject(key);
+                            TestimonialModel testimonialModel = new Gson().fromJson(String.valueOf(jsonObject),TestimonialModel.class);
+                            testimonialModels.add(testimonialModel);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    testimonialAdapter = new HomeTestimonialAdapter(getContext(),testimonialModels);
+                    binding.testimonialList.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+                    binding.testimonialList.setAdapter(testimonialAdapter);
+                }else {
+
+                }
+            }
+        });
+    }
+
     private void setGreetState() {
         Calendar c =Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         if (timeOfDay >=0 && timeOfDay <12){
             binding.greetTime.setText("Good Morning");
-            binding.greetTime.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.round_arrow_back,0);
+            binding.greetTime.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_greet_morning,0);
         } else if (timeOfDay >= 12 && timeOfDay<16) {
             binding.greetTime.setText("Good Afternoon");
         }else if (timeOfDay >=16 && timeOfDay <24){
@@ -146,14 +186,14 @@ public class HomeItemFragment extends Fragment {
                                 JSONObject object = obj1.getJSONObject(i);
                                 BannerModel bannerModel = new Gson().fromJson(String.valueOf(object),BannerModel.class);
                                 if (bannerModel.getVisible()){
-                                    models.add(bannerModel);
+                                    bannerModels.add(bannerModel);
                                 }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                    bannerAdapter = new BannerAdapter(getContext(), models);
+                    bannerAdapter = new BannerAdapter(getContext(), bannerModels);
                     EndlessPagerAdapter endlessPagerAdapter = new EndlessPagerAdapter(bannerAdapter, binding.bannerViewpager);
                     binding.bannerViewpager.setAdapter(endlessPagerAdapter);
                     binding.bannerViewpager.setClipToPadding(false);

@@ -1,0 +1,66 @@
+{
+  "guidance": [
+    {
+      "title": "BONUS 1",
+      "description": "On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."
+    },
+    {
+      "title": "BONUS 2",
+      "description": "Access to 600+ Training Assets(₹15,000 Free!) On JSA Online portal you would find hundreds of videos, notes & toolkits you can use to sharpen your financial knowledge."
+    },
+    {
+      "title": "BONUS 3",
+      "description": "Monthly Live Meetings(₹24,000 Free!) You will join 12 Live Meetings of JSA Online Subscribers in which Jagmohan & participants share invaluable insights."
+    },
+    {
+      "title": "BONUS 4",
+      "description": "Unlimited One-on-One Session(₹30,000 Free!) You will get an opportunity to book your one-on-one meeting with you coach Jagmohan Singh - any number of time."
+    }
+  ],
+  "testimonials": [
+    {
+    }
+  ],
+  "help": [
+    {
+      "title": "How would you handle my sensitive data?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
+    },
+    {
+      "title": "We do not take your data. All working is done on your Computer through video calls.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
+    },
+    {
+      "title": "I don’t know anything about finance. Will it work for me?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
+    },
+    {
+      "title": "Can my team also join with me?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
+    }
+  ],
+  "ask_your_question": [
+    {
+      "title": "Purse Cash",
+      "description": "Money Back Term Benefit with Profit Granted",
+      "status": "progress",
+      "chat": [
+        {
+          "message": "Hi User!",
+          "date_time": "20 Feb 2023 12:33 am",
+          "isAdmin": true
+        },
+        {
+          "message": "How can I assist you?",
+          "date_time": "20 Feb 2023 12:33 am",
+          "isAdmin": true
+        },
+        {
+          "message": "Facing severe loss in my business",
+          "date_time": "20 Feb 2023 12:33 am",
+          "isAdmin": false
+        }
+      ]
+    }
+  ]
+}

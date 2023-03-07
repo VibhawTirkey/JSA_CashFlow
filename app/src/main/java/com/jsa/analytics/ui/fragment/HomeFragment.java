@@ -53,25 +53,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickListener {
 
     FragmentHomeBinding binding;
-    ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK){
-                    InputStream inputStream = null;
-                    try {
-                        inputStream = getContext().getContentResolver().openInputStream(result.getData().getData());
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    if (inputStream==null){
-                        Toast.makeText(getContext(), "Unable to Open", Toast.LENGTH_SHORT).show();
-                    }else {
-                        setCsvData(inputStream);
-                    }
-
-                }
-            }
-    );
+    ActivityResultLauncher<Intent> launcher;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     Fragment fragment = null;
@@ -126,6 +108,26 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
         transaction.replace(binding.container.getId(),fragment);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.commit();
+
+        launcher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK){
+                        InputStream inputStream = null;
+                        try {
+                            inputStream = getContext().getContentResolver().openInputStream(result.getData().getData());
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        if (inputStream==null){
+                            Toast.makeText(getContext(), "Unable to Open", Toast.LENGTH_SHORT).show();
+                        }else {
+                            setCsvData(inputStream);
+                        }
+
+                    }
+                }
+        );
 
         binding.image.setOnClickListener(v -> {
             fragment = new PremiumHomeFragment();

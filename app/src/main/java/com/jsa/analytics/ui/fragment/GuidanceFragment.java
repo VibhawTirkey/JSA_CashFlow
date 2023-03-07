@@ -17,6 +17,11 @@ import com.jsa.analytics.adapter.GuidanceAdapter;
 import com.jsa.analytics.callback.IFragmentCallback;
 import com.jsa.analytics.databinding.FragmentGuidanceBinding;
 import com.jsa.analytics.model.GuidanceModel;
+import com.jsa.analytics.utils.Utilities;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,28 +59,22 @@ public class GuidanceFragment extends Fragment {
         binding.toolbar.setNavigationOnClickListener(v -> iFragmentCallback.callBackAction(OPEN_HOME));
 
         list = new ArrayList<>();
-        list.add(new GuidanceModel("BONUS 1","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 2","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 3","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 4","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 5","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
-        list.add(new GuidanceModel("BONUS 6","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
+//        list.add(new GuidanceModel("BONUS 1","On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."));
+        try {
+            JSONObject obj = new JSONObject(Utilities.loadJSONFromAsset(getActivity(), "JSA.json"));
+            JSONArray jsonArray = obj.getJSONArray("guidance");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jo_inside = jsonArray.getJSONObject(i);
+                String title = jo_inside.getString("title");
+                String description = jo_inside.getString("description");
+
+                //Add your values in your `ArrayList` as below:
+                list.add(new GuidanceModel(title,description));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         adapter = new GuidanceAdapter(getContext(),list);
         binding.guidanceList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
         binding.guidanceList.setAdapter(adapter);

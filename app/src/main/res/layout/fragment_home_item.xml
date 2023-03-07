@@ -29,7 +29,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:background="@drawable/home_button_container_bg"
                 app:layout_constraintTop_toBottomOf="@id/banner_viewpager">
 
@@ -37,9 +38,10 @@
                     android:id="@+id/business_dashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
                     android:contentDescription="Business Dashboard"
-                    android:src="@drawable/ic_outline_account_circle"
+                    android:src="@drawable/ic_business_dashboard"
+                    app:tint="@color/dashboard_icon"
                     app:backgroundTint="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/videos"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -62,10 +64,11 @@
                     android:id="@+id/videos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
                     android:contentDescription="Videos"
-                    android:src="@drawable/ic_outline_account_circle"
+                    android:src="@drawable/ic_yt_videos"
                     app:backgroundTint="@color/white"
+                    app:tint="@color/dashboard_icon"
                     app:layout_constraintEnd_toStartOf="@+id/insight"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/business_dashboard"
@@ -87,10 +90,11 @@
                     android:id="@+id/insight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
                     android:contentDescription="Insight"
-                    android:src="@drawable/ic_outline_account_circle"
+                    android:src="@drawable/ic_insight"
                     app:backgroundTint="@color/white"
+                    app:tint="@color/dashboard_icon"
                     app:layout_constraintEnd_toStartOf="@+id/ask_your_question"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/videos"
@@ -112,10 +116,11 @@
                     android:id="@+id/ask_your_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
                     android:contentDescription="Ask Your Question"
-                    android:src="@drawable/ic_outline_account_circle"
+                    android:src="@drawable/ic_ask_your_question"
                     app:backgroundTint="@color/white"
+                    app:tint="@color/dashboard_icon"
                     app:layout_constraintEnd_toStartOf="@+id/help"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/insight"
@@ -137,10 +142,11 @@
                     android:id="@+id/help"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
                     android:contentDescription="Help"
-                    android:src="@drawable/ic_outline_account_circle"
+                    android:src="@drawable/ic_help"
                     app:backgroundTint="@color/white"
+                    app:tint="@color/dashboard_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/ask_your_question"
@@ -162,10 +168,10 @@
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:background="#D5D5D5"
-                    app:layout_constraintStart_toStartOf="@id/business_dashboard"
-                    app:layout_constraintEnd_toEndOf="@id/help"
+                    app:layout_constraintTop_toTopOf="@id/business_dashboard"
                     app:layout_constraintBottom_toBottomOf="@id/business_dashboard"
-                    app:layout_constraintTop_toTopOf="@id/business_dashboard"/>
+                    app:layout_constraintStart_toStartOf="@id/business_dashboard"
+                    app:layout_constraintEnd_toEndOf="@id/help"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,6 +194,7 @@
                     android:text="View all"
                     android:textSize="18sp"
                     android:textColor="#3f64b4"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -210,6 +217,8 @@
                     android:text="Good Morning"
                     android:textSize="16sp"
                     android:textColor="#CC000000"
+                    android:drawableEnd="@drawable/ic_greet_morning"
+                    android:drawablePadding="10dp"
                     app:layout_constraintStart_toStartOf="@id/textView1"
                     app:layout_constraintTop_toBottomOf="@id/textView1"/>
 
@@ -253,6 +262,7 @@
                     android:layout_marginRight="20dp"
                     android:padding="5dp"
                     android:text="View all"
+                    android:visibility="invisible"
                     android:textColor="#3f64b4"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -274,144 +284,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
-
-
-
-
-    <!--<LinearLayout
-        android:id="@+id/linear_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:visibility="gone"
-        android:weightSum="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/banner_viewpager"
-        app:layout_constraintWidth_percent=".9">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="CashFlow"
-                android:src="@drawable/ic_outline_account_circle"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="CashFlow"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="Videos"
-                android:src="@drawable/ic_outline_account_circle"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Videos"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="insight"
-                android:src="@drawable/ic_outline_account_circle"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Insight"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="History"
-                android:src="@drawable/ic_outline_account_circle"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="History"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="others"
-                android:src="@drawable/ic_outline_account_circle"
-                app:backgroundTint="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Others"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

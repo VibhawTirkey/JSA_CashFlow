@@ -12,10 +12,16 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -23,13 +29,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.jsa.analytics.R;
 import com.jsa.analytics.callback.IFragmentCallback;
 import com.jsa.analytics.databinding.ActivityDashboardBinding;
+import com.jsa.analytics.databinding.DialogLogoutBinding;
 import com.jsa.analytics.ui.fragment.GuidanceFragment;
 import com.jsa.analytics.ui.fragment.HomeFragment;
-import com.jsa.analytics.ui.fragment.HomeItemFragment;
-import com.jsa.analytics.ui.fragment.InsightFragment;
 import com.jsa.analytics.ui.fragment.NotificationFragment;
-import com.jsa.analytics.ui.fragment.PremiumHomeFragment;
 import com.jsa.analytics.ui.fragment.ProfileFragment;
+import com.jsa.analytics.ui.fragment.ReportFragment;
+import com.jsa.analytics.utils.NetworkStateUtil;
 
 public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, IFragmentCallback, NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,9 +44,12 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
 
     FirebaseAuth firebaseAuth;
     HomeFragment homeFragment;
-    InsightFragment insightFragment;
     ProfileFragment profileFragment;
     GuidanceFragment guidanceFragment;
+    ReportFragment reportFragment;
+    Dialog dialog;
+    DialogLogoutBinding logoutBinding;
+    NetworkStateUtil networkState = new NetworkStateUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +60,31 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
 
         firebaseAuth = FirebaseAuth.getInstance();
         homeFragment = new HomeFragment();
-        insightFragment = new InsightFragment();
         profileFragment = new ProfileFragment();
         guidanceFragment = new GuidanceFragment();
+        reportFragment = new ReportFragment();
 
+        dialog = new Dialog(getApplicationContext());
+        logoutBinding = DialogLogoutBinding.inflate(getLayoutInflater());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(logoutBinding.getRoot());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
 //        getSupportActionBar().hide();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(binding.homeContainer.getId(),new HomeFragment());
         transaction.commit();
         binding.bottomNav.setOnNavigationItemSelectedListener(this);
         binding.navView.setNavigationItemSelectedListener(this);
+
+        logoutBinding.yes.setOnClickListener(v -> {
+            firebaseAuth.signOut();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            finish();
+        });
+        logoutBinding.no.setOnClickListener(v -> dialog.dismiss());
+
+
     }
 
     @Override
@@ -76,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
                 break;
             case R.id.report:
-                transaction.replace(binding.homeContainer.getId(),insightFragment);
+                transaction.replace(binding.homeContainer.getId(),reportFragment);
                 transaction.commit();
                 return true;
             case R.id.guidance:
@@ -96,14 +120,20 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
             case R.id.dashboard:
                 startActivity(new Intent(getApplicationContext(), CashFlowDashboardActivity.class));
                 break;
-            case R.id.settings:
+            /*case R.id.settings:
                 transaction.replace(binding.homeContainer.getId(),new PremiumHomeFragment());
                 transaction.commit();
+                break;*/
+            case R.id.rate:
+                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
                 break;
             case R.id.logout:
-                firebaseAuth.signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                finish();
+//                dialog.show();
                 break;
             default:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -132,5 +162,18 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 break;
             default:
         }
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkState,intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(networkState);
+        super.onDestroy();
     }
 }
