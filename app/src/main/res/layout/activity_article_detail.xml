@@ -64,8 +64,8 @@
                 app:layout_constraintTop_toBottomOf="@id/title">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/place_holder"/>
             </androidx.cardview.widget.CardView>

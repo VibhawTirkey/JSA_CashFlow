@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,6 +35,7 @@ import com.jsa.analytics.databinding.FragmentHomeItemBinding;
 import com.jsa.analytics.model.BannerModel;
 import com.jsa.analytics.model.BannersModel;
 import com.jsa.analytics.model.TestimonialModel;
+import com.jsa.analytics.model.UsersModel;
 import com.jsa.analytics.ui.AskYourQuestionActivity;
 import com.jsa.analytics.ui.CashFlowDashboardActivity;
 import com.jsa.analytics.ui.DashboardActivity;
@@ -90,6 +92,7 @@ public class HomeItemFragment extends Fragment {
 
         setGreetState();
 
+        getUserData();
         //banner
         getBannerData();
         binding.bannerViewpager.setOnTouchListener((view, motionEvent) -> {
@@ -121,6 +124,16 @@ public class HomeItemFragment extends Fragment {
         binding.askYourQuestion.setOnClickListener(v -> startActivity(new Intent(getContext(), AskYourQuestionActivity.class)));
 
         return binding.getRoot();
+    }
+
+    private void getUserData() {
+        firebaseFirestore.collection("users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                UsersModel user = documentSnapshot.toObject(UsersModel.class);
+                binding.textView1.setText("Hi "+user.getName());
+            }
+        });
     }
 
     private void getTestimonialData() {

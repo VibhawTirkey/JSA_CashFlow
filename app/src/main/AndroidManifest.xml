@@ -15,6 +15,9 @@
         android:theme="@style/Theme.JSACashFlow"
         tools:targetApi="31">
         <activity
+            android:name=".ui.PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SecurityActivity"
             android:exported="false" />
         <activity

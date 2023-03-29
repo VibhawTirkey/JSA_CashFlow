@@ -41,45 +41,37 @@ public class SignupActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
 
-        binding.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        binding.back.setOnClickListener(view -> onBackPressed());
 
-        binding.signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!binding.fullName.getText().toString().isEmpty()){
-                    if (!binding.email.getText().toString().isEmpty()){
-                        if (!binding.mobileNumber.getText().toString().isEmpty()){
-                            if (!binding.password.getText().toString().isEmpty()){
-                                if (!binding.confirmPassword.getText().toString().isEmpty()){
-                                    if (Utilities.isValidEmail(binding.email.getText().toString())){
-                                        if (binding.password.getText().toString().matches(binding.confirmPassword.getText().toString())){
-                                            signupUser(binding.email.getText().toString(),binding.password.getText().toString());
-                                        }else {
-                                            binding.confirmPassContainer.setError("Not Matched");
-                                        }
+        binding.signup.setOnClickListener(view -> {
+            if (!binding.fullName.getText().toString().isEmpty()){
+                if (!binding.email.getText().toString().isEmpty()){
+                    if (!binding.mobileNumber.getText().toString().isEmpty()){
+                        if (!binding.password.getText().toString().isEmpty()){
+                            if (!binding.confirmPassword.getText().toString().isEmpty()){
+                                if (Utilities.isValidEmail(binding.email.getText().toString())){
+                                    if (binding.password.getText().toString().matches(binding.confirmPassword.getText().toString())){
+                                        signupUser(binding.email.getText().toString(),binding.password.getText().toString());
                                     }else {
-                                        binding.emailContainer.setError("Incorrect Email address");
+                                        binding.confirmPassContainer.setError("Not Matched");
                                     }
                                 }else {
-                                    binding.confirmPassContainer.setError("Empty");
+                                    binding.emailContainer.setError("Incorrect Email address");
                                 }
                             }else {
-                                binding.passContainer.setError("Empty");
+                                binding.confirmPassContainer.setError("Empty");
                             }
                         }else {
-                            binding.mobileContainer.setError("Empty");
+                            binding.passContainer.setError("Empty");
                         }
                     }else {
-                        binding.emailContainer.setError("Empty");
+                        binding.mobileContainer.setError("Empty");
                     }
                 }else {
-                    binding.nameContainer.setError("Empty");
+                    binding.emailContainer.setError("Empty");
                 }
+            }else {
+                binding.nameContainer.setError("Empty");
             }
         });
         binding.gotoLogin.setOnClickListener(new View.OnClickListener() {

@@ -60,6 +60,7 @@
                     android:id="@+id/text1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:text="When you join, Jagmohan Singh and his team shall help you install five absolutely essential tools in your business to help you get on the fast track to big profits. \n These Five essentials tools are:"
                     android:textColor="#CC000000"/>
 
@@ -83,9 +84,10 @@
                     android:layout_height="wrap_content"
                     android:text="Financial Summary"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
-                    android:drawableLeft="@drawable/financial_summery_icon"/>
+                    app:drawableLeftCompat="@drawable/financial_summery_icon" />
 
                 <TextView
                     android:id="@+id/text3"
@@ -93,9 +95,10 @@
                     android:layout_height="wrap_content"
                     android:text="MIS fromAccounts &amp; Finance"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/accounts_finance_icon"/>
+                    app:drawableStartCompat="@drawable/accounts_finance_icon" />
 
                 <TextView
                     android:id="@+id/text4"
@@ -103,9 +106,10 @@
                     android:layout_height="wrap_content"
                     android:text="Working Capital"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/working_capital_icon"/>
+                    app:drawableStartCompat="@drawable/working_capital_icon" />
 
                 <TextView
                     android:id="@+id/text5"
@@ -113,9 +117,10 @@
                     android:layout_height="wrap_content"
                     android:text="Cash Flow Model"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/cash_flow_icon"/>
+                    app:drawableStartCompat="@drawable/cash_flow_icon" />
 
                 <TextView
                     android:id="@+id/text6"
@@ -123,9 +128,10 @@
                     android:layout_height="wrap_content"
                     android:text="Net Worth of Business"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/net_worth_icon"/>
+                    app:drawableStartCompat="@drawable/net_worth_icon" />
 
             </LinearLayout>
 

@@ -23,7 +23,7 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/toolbar_blue"
+        android:textColor="#707070"
         android:text="On-demand Query Resolution (₹15,000 Free!) Just log-on to JSA Online Portal to put your query and get instant help from our 100+ experts - as many time as you want."
         app:layout_constraintTop_toBottomOf="@id/title"/>
 

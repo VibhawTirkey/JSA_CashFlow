@@ -20,8 +20,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -49,6 +52,7 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
     ReportFragment reportFragment;
     Dialog dialog;
     DialogLogoutBinding logoutBinding;
+    boolean doubleBackToExitPressedOnce = false;
     NetworkStateUtil networkState = new NetworkStateUtil();
 
     @Override
@@ -120,6 +124,9 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
             case R.id.dashboard:
                 startActivity(new Intent(getApplicationContext(), CashFlowDashboardActivity.class));
                 break;
+            case R.id.app_info:
+                startActivity(new Intent(getApplicationContext(),PaymentActivity.class));
+                break;
             /*case R.id.settings:
                 transaction.replace(binding.homeContainer.getId(),new PremiumHomeFragment());
                 transaction.commit();
@@ -175,5 +182,29 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
     protected void onDestroy() {
         unregisterReceiver(networkState);
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                finishAffinity();
+                finish();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_LONG).show();
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
     }
 }

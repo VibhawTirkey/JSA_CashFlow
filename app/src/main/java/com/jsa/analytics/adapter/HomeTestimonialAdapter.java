@@ -37,6 +37,7 @@ public class HomeTestimonialAdapter extends RecyclerView.Adapter<HomeTestimonial
         Glide.with(context).load(data.getProfile_img()).centerCrop()
                 .into(holder.binding.image);
         holder.binding.name.setText(data.getName());
+        holder.binding.desigCompany.setText(data.getDesignation()+", "+data.getCompany());
         holder.binding.description.setText(data.getContent());
     }
 
