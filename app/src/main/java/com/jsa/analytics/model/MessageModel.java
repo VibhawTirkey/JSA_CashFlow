@@ -1,14 +1,21 @@
 package com.jsa.analytics.model;
 
+import com.google.firebase.Timestamp;
+
 public class MessageModel {
     String message;
-    String date_time;
+    Timestamp createdOn;
     Boolean isAdmin;
+    String isSeen;
 
-    public MessageModel(String message, String date_time, Boolean isAdmin) {
+    public MessageModel() {
+    }
+
+    public MessageModel(String message, Timestamp createdOn, Boolean isAdmin, String isSeen) {
         this.message = message;
-        this.date_time = date_time;
+        this.createdOn = createdOn;
         this.isAdmin = isAdmin;
+        this.isSeen = isSeen;
     }
 
     public String getMessage() {
@@ -19,12 +26,12 @@ public class MessageModel {
         this.message = message;
     }
 
-    public String getDate_time() {
-        return date_time;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setDate_time(String date_time) {
-        this.date_time = date_time;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 
     public Boolean getAdmin() {
@@ -33,5 +40,13 @@ public class MessageModel {
 
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getIsSeen() {
+        return isSeen;
+    }
+
+    public void setIsSeen(String isSeen) {
+        this.isSeen = isSeen;
     }
 }

@@ -130,8 +130,8 @@ public class HomeItemFragment extends Fragment {
         firebaseFirestore.collection("users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                UsersModel user = documentSnapshot.toObject(UsersModel.class);
-                binding.textView1.setText("Hi "+user.getName());
+//                UsersModel user = documentSnapshot.toObject(UsersModel.class);
+//                binding.textView1.setText("Hi "+user.getName());
             }
         });
     }

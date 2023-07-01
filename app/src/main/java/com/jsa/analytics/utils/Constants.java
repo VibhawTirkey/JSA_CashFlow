@@ -9,4 +9,6 @@ public interface Constants {
     String OPEN_HOME = "open_home_fragment";
     String RAZORPAY_KEY_ID = "rzp_test_0PRPTdPWfDTgSs";
     String RAZORPAY_MERCHANT_KEY = "s6ZbIxn8AY4uenbr2VYvlRog";
+    String CHAT_NODE_STATUS_ONGOING = "ongoing";
+    String CHAT_NODE_STATUS_CLOSED = "closed";
 }

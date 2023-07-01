@@ -1,31 +1,42 @@
 package com.jsa.analytics.ui;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import com.jsa.analytics.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jsa.analytics.adapter.AskYourQuestionAdapter;
 import com.jsa.analytics.databinding.ActivityAskYourQuestionBinding;
+import com.jsa.analytics.databinding.DialogAddQuestionBinding;
 import com.jsa.analytics.model.AskYourQuestionModel;
+import com.jsa.analytics.model.PostQuestionModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AskYourQuestionActivity extends AppCompatActivity {
 
     ActivityAskYourQuestionBinding binding;
     AskYourQuestionAdapter adapter;
-    boolean oldQuestionPressed = true;
 
     List<AskYourQuestionModel> oldList;
     List<AskYourQuestionModel> newList;
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,59 +44,66 @@ public class AskYourQuestionActivity extends AppCompatActivity {
         binding = ActivityAskYourQuestionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        oldList = new ArrayList<>();
-        oldList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","view",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","close",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","done",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","view",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","close",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","done",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","view",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","close",true));
-        oldList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","done",true));
-        newList = new ArrayList<>();
-        newList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Money Back Term Benefit with Profit Granted","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Single Premium Plan Without Profits","progress",true));
-        newList.add(new AskYourQuestionModel("Purse Cash","Monthly Savings Assurance Plan With Profit","progress",true));
-        adapter = new AskYourQuestionAdapter(getApplicationContext(),oldList);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+
         binding.toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        binding.questionList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL,false));
-        binding.questionList.setAdapter(adapter);
 
-        binding.oldQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!oldQuestionPressed){
-                    binding.oldQuestion.setBackgroundColor(getResources().getColor(R.color.toolbar_blue));
-                    binding.oldQuestion.setTextColor(getResources().getColor(R.color.white));
-                    binding.newQuestion.setTextColor(getResources().getColor(R.color.toolbar_blue));
-                    binding.newQuestion.setBackgroundColor(getResources().getColor(R.color.white));
-                    adapter = new AskYourQuestionAdapter(getApplicationContext(),oldList);
-                    binding.questionList.setAdapter(adapter);
-                    oldQuestionPressed = true;
+        getAllQuestions();
+
+        binding.addQuestion.setOnClickListener(v -> {
+            DialogAddQuestionBinding dialogBinding = DialogAddQuestionBinding.inflate(getLayoutInflater());
+            BottomSheetDialog bottomSheet = new BottomSheetDialog(AskYourQuestionActivity.this);
+            bottomSheet.setContentView(dialogBinding.getRoot());
+//            bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            bottomSheet.show();
+
+            dialogBinding.close.setOnClickListener(v1 -> bottomSheet.dismiss());
+            dialogBinding.postQuestion.setOnClickListener(v12 -> {
+                String title = dialogBinding.title.getText().toString();
+                String description = dialogBinding.description.getText().toString();
+                if (!title.isEmpty() || !description.isEmpty()) {
+                    postQuestion(title, description);
+                    bottomSheet.dismiss();
                 }
-            }
+
+            });
         });
+    }
 
-        binding.newQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (oldQuestionPressed){
-                    binding.newQuestion.setBackgroundColor(getResources().getColor(R.color.toolbar_blue));
-                    binding.newQuestion.setTextColor(getResources().getColor(R.color.white));
-                    binding.oldQuestion.setTextColor(getResources().getColor(R.color.toolbar_blue));
-                    binding.oldQuestion.setBackgroundColor(getResources().getColor(R.color.white));
-                    adapter = new AskYourQuestionAdapter(getApplicationContext(),newList);
+    private void getAllQuestions() {
+        firestore.collection("askYourQuestions").document(firebaseAuth.getUid()).collection("questions").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<AskYourQuestionModel> list = new ArrayList<>();
+                for (QueryDocumentSnapshot document:task.getResult()){
+                    AskYourQuestionModel askYourQuestionModel = document.toObject(AskYourQuestionModel.class);
+                    askYourQuestionModel.setDocumentId(document.getId());
+                    list.add(askYourQuestionModel);
+                    adapter = new AskYourQuestionAdapter(getApplicationContext(), list);
+                    binding.questionList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
                     binding.questionList.setAdapter(adapter);
-                    oldQuestionPressed = false;
                 }
+            }else {
+                Log.e("TAG", "onComplete: ", task.getException());
             }
         });
     }
+
+    private void postQuestion(String title, String description) {
+        Date date = new Date();
+        String dateN = new SimpleDateFormat("yyyyMMddhhmmss").format(date);
+        PostQuestionModel model = new PostQuestionModel(title, description, "ongoing", new Timestamp(date));
+        firestore.collection("askYourQuestions").document(firebaseAuth.getUid()).collection("questions").document(dateN).set(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    getAllQuestions();
+                    Toast.makeText(AskYourQuestionActivity.this, "Successfully Submitted Your Query!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+
 }

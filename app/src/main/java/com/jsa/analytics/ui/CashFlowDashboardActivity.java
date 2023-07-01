@@ -133,7 +133,7 @@ public class CashFlowDashboardActivity extends AppCompatActivity {
 
         binding.add.setOnClickListener(view -> {
             AddDialogFragmentLayoutBinding dialogBinding = AddDialogFragmentLayoutBinding.inflate(getLayoutInflater());
-            BottomSheetDialog bottomSheet = new BottomSheetDialog(CashFlowDashboardActivity.this,R.style.Theme_Transparent);
+            BottomSheetDialog bottomSheet = new BottomSheetDialog(CashFlowDashboardActivity.this);
             bottomSheet.setContentView(dialogBinding.getRoot());
             bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             bottomSheet.show();
@@ -152,6 +152,8 @@ public class CashFlowDashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),MonthSelectActivity.class));
                 bottomSheet.dismiss();
             });
+
+            dialogBinding.close.setOnClickListener(v -> bottomSheet.dismiss());
 
             dialogBinding.cancel.setOnClickListener(view13 -> bottomSheet.dismiss());
         });

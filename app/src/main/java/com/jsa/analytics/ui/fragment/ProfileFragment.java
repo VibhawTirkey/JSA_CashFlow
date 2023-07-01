@@ -83,10 +83,10 @@ public class ProfileFragment extends Fragment {
         firebaseFirestore.collection("users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                UsersModel user = documentSnapshot.toObject(UsersModel.class);
-                binding.name.setText(user.getName());
-                binding.email.setText(user.getEmail());
-                binding.phone.setText("+91"+user.getPhone());
+//                UsersModel user = documentSnapshot.toObject(UsersModel.class);
+//                binding.name.setText(user.getName());
+//                binding.email.setText(user.getEmail());
+//                binding.phone.setText("+91"+user.getPhone());
             }
         });
 

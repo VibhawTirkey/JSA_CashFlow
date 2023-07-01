@@ -15,49 +15,13 @@
         app:navigationIcon="@drawable/ic_round_arrow_back"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/old_question"
-        android:theme="@style/Theme.MaterialComponents.Light"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp"
-        app:cornerRadius="8dp"
-        android:text="Old Question"
-        app:strokeColor="@color/toolbar_blue"
-        app:strokeWidth="1.5dp"
-        app:backgroundTint="@color/toolbar_blue"
-        android:textAllCaps="false"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/new_question"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/new_question"
-        android:theme="@style/Theme.MaterialComponents.Light"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="20dp"
-        app:cornerRadius="8dp"
-        android:text="New Question"
-        android:visibility="gone"
-        app:strokeColor="@color/toolbar_blue"
-        app:strokeWidth="1.5dp"
-        android:textColor="@color/toolbar_blue"
-        android:backgroundTint="@color/white"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/old_question"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/question_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:listitem="@layout/item_ask_your_question"
-        app:layout_constraintTop_toBottomOf="@id/old_question"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.button.MaterialButton

@@ -12,6 +12,8 @@ import com.jsa.analytics.databinding.ItemReceiveBinding;
 import com.jsa.analytics.databinding.ItemSentBinding;
 import com.jsa.analytics.model.MessageModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter {
@@ -53,20 +55,21 @@ public class ChatAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MessageModel message = list.get(position);
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMM yy h:m a");
         if (message.getAdmin()){
             ReceiverViewHolder viewHolder = (ReceiverViewHolder) holder;
             viewHolder.binding.message.setText(message.getMessage());
-            viewHolder.binding.time.setText(message.getDate_time());
+            viewHolder.binding.time.setText(sdf.format(message.getCreatedOn().toDate()));
         }else {
             SenderViewHolder viewHolder = (SenderViewHolder) holder;
             viewHolder.binding.message.setText(message.getMessage());
-            viewHolder.binding.time.setText(message.getDate_time());
+            viewHolder.binding.time.setText(sdf.format(message.getCreatedOn().toDate()));
         }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.isEmpty()?0: list.size();
     }
 
     public class SenderViewHolder extends RecyclerView.ViewHolder {

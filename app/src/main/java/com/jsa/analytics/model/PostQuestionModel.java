@@ -1,29 +1,19 @@
 package com.jsa.analytics.model;
 
-public class AskYourQuestionModel {
+import com.google.firebase.Timestamp;
+
+public class PostQuestionModel {
     String topic;
     String description;
     String status;
-    boolean isSeen;
+    Timestamp createdOn;
+    Chats chats;
 
-    String documentId;
-
-    public AskYourQuestionModel() {
-    }
-
-    public AskYourQuestionModel(String topic, String description, String status, boolean isSeen) {
+    public PostQuestionModel(String topic, String description, String status, Timestamp createdOn) {
         this.topic = topic;
         this.description = description;
         this.status = status;
-        this.isSeen = isSeen;
-    }
-
-    public String getDocumentId() {
-        return documentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
+        this.createdOn = createdOn;
     }
 
     public String getTopic() {
@@ -50,11 +40,24 @@ public class AskYourQuestionModel {
         this.status = status;
     }
 
-    public boolean isSeen() {
-        return isSeen;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setSeen(boolean seen) {
-        isSeen = seen;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public Chats getChats() {
+        return chats;
+    }
+
+    public void setChats(Chats chats) {
+        this.chats = chats;
+    }
+
+    public static class Chats{
+        String message;
+        String createdOn;
     }
 }
